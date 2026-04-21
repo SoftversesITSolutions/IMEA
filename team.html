@@ -144,6 +144,12 @@
   /* ── NAVBAR SCROLL ── */
   .navbar-blur { backdrop-filter: blur(12px); background-color: rgba(0,27,61,0.92) !important; }
 
+  /* ── MOBILE NAV DRAWER ── */
+  #nav-drawer { transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); }
+  #nav-drawer.drawer-open { transform: translateX(0); }
+  #nav-overlay { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+  #nav-overlay.drawer-open { opacity: 1; pointer-events: auto; }
+
   /* ── PARALLAX ── */
   .parallax-bg { background-attachment: fixed; background-size: cover; background-position: center; }
   @media (max-width: 768px) { .parallax-bg { background-attachment: scroll; } }
@@ -174,7 +180,7 @@
      NAVBAR
 ════════════════════════════════════════ -->
 <header id="navbar" class="fixed top-0 w-full z-50 border-b border-outline-variant/30 bg-[#001B3D]">
-  <div class="flex justify-between items-center max-w-[1440px] mx-auto px-12 py-6">
+  <div class="flex justify-between items-center max-w-[1440px] mx-auto px-5 md:px-8 lg:px-12 py-5 md:py-6">
     <a href="Index.html"><img alt="IMEA Venture Capital" class="h-10" src="Static/Images/IMEA_Logo.png"/></a>
     <nav class="hidden md:flex gap-8 items-center">
       <a class="text-white pb-1 font-label-caps text-label-caps hover:text-secondary-container transition-colors duration-300" href="Index.html">HOME</a>
@@ -186,9 +192,29 @@
     <button class="hidden md:block font-label-caps text-label-caps bg-secondary-container text-on-secondary-container px-6 py-3 hover:bg-secondary hover:text-white transition-colors duration-300">
       SUBMIT PITCH
     </button>
-    <button class="md:hidden text-white"><span class="material-symbols-outlined">menu</span></button>
+    <button id="hamburger-btn" class="md:hidden text-white p-1"><span class="material-symbols-outlined">menu</span></button>
   </div>
 </header>
+
+<!-- Mobile Nav Overlay -->
+<div id="nav-overlay" class="fixed inset-0 bg-black/60 z-[60] md:hidden"></div>
+<!-- Mobile Nav Drawer -->
+<div id="nav-drawer" class="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-[#001B3D] z-[70] flex flex-col md:hidden">
+  <div class="flex items-center justify-between px-6 py-5 border-b border-white/10 flex-shrink-0">
+    <a href="Index.html"><img alt="IMEA Venture Capital" class="h-8" src="Static/Images/IMEA_Logo.png"/></a>
+    <button id="nav-close-btn" class="text-white p-1"><span class="material-symbols-outlined">close</span></button>
+  </div>
+  <nav class="flex flex-col px-6 py-8 gap-6 flex-1 overflow-y-auto">
+    <a class="text-white/70 font-label-caps text-label-caps hover:text-white transition-colors" href="Index.html">HOME</a>
+    <a class="text-white/70 font-label-caps text-label-caps hover:text-white transition-colors" href="Portfolio.html">PORTFOLIO</a>
+    <a class="text-secondary-container font-label-caps text-label-caps border-b border-secondary-container/40 pb-2" href="Our_Team.html">TEAM</a>
+    <a class="text-white/70 font-label-caps text-label-caps hover:text-white transition-colors" href="Blog.html">INSIGHTS</a>
+    <a class="text-white/70 font-label-caps text-label-caps hover:text-white transition-colors" href="Contact_Us.html">CONTACT</a>
+  </nav>
+  <div class="px-6 pb-8 flex-shrink-0">
+    <a href="Contact_Us.html" class="block w-full font-label-caps text-label-caps bg-secondary-container text-on-secondary-container px-6 py-4 text-center hover:bg-[#C5A059] hover:text-white transition-colors duration-300">SUBMIT PITCH</a>
+  </div>
+</div>
 
 <!-- ════════════════════════════════════════
      HERO
@@ -814,6 +840,19 @@
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
   revealEls.forEach(el => obs.observe(el));
+
+  // Mobile nav drawer
+  (function() {
+    const hamburger = document.getElementById('hamburger-btn');
+    const overlay = document.getElementById('nav-overlay');
+    const drawer = document.getElementById('nav-drawer');
+    const closeBtn = document.getElementById('nav-close-btn');
+    function openDrawer() { overlay.classList.add('drawer-open'); drawer.classList.add('drawer-open'); document.body.style.overflow = 'hidden'; }
+    function closeDrawer() { overlay.classList.remove('drawer-open'); drawer.classList.remove('drawer-open'); document.body.style.overflow = ''; }
+    if (hamburger) hamburger.addEventListener('click', openDrawer);
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    if (overlay) overlay.addEventListener('click', closeDrawer);
+  })();
 </script>
 </body>
 </html>

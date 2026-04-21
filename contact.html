@@ -198,9 +198,15 @@
 
   /* Gold divider line */
   .gold-rule { height: 1px; background: linear-gradient(to right, #C5A059, transparent); border: none; }
+
+  /* ── MOBILE NAV DRAWER ── */
+  #nav-drawer { transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); }
+  #nav-drawer.drawer-open { transform: translateX(0); }
+  #nav-overlay { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+  #nav-overlay.drawer-open { opacity: 1; pointer-events: auto; }
 </style>
 </head>
-<body class="bg-background text-on-background antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+<body class="bg-background text-on-background antialiased selection:bg-secondary-container selection:text-on-secondary-container overflow-x-hidden">
 
 <!-- Reading Progress Bar -->
 <div id="read-progress"></div>
@@ -209,7 +215,7 @@
 <!-- NAVBAR                                              -->
 <!-- ═══════════════════════════════════════════════════ -->
 <header id="navbar" class="fixed top-0 w-full z-50 border-b border-white/10 bg-[#001B3D]">
-  <div class="flex justify-between items-center max-w-[1440px] mx-auto px-12 py-5">
+  <div class="flex justify-between items-center max-w-[1440px] mx-auto px-5 md:px-8 lg:px-12 py-5">
     <a href="Index.html"><img alt="IMEA Venture Capital" class="h-10" src="Static/Images/IMEA_Logo.png"/></a>
     <nav class="hidden md:flex gap-8 items-center">
       <a class="text-white pb-1 font-label-caps text-label-caps hover:text-secondary-container transition-colors duration-300" href="Index.html">HOME</a>
@@ -221,21 +227,31 @@
     <button class="hidden md:block font-label-caps text-label-caps bg-secondary-container text-on-secondary-container px-6 py-3 hover:bg-[#C5A059] hover:text-white transition-colors duration-300">
       SUBMIT PITCH
     </button>
-    <button class="md:hidden text-white" id="mobile-menu-btn">
+    <button id="hamburger-btn" class="md:hidden text-white p-1">
       <span class="material-symbols-outlined">menu</span>
     </button>
   </div>
-  <!-- Mobile Menu -->
-  <div class="hidden md:hidden bg-[#001B3D] border-t border-white/10 px-12 py-6" id="mobile-menu">
-    <nav class="flex flex-col gap-5">
-      <a class="text-white font-label-caps text-label-caps" href="Index.html">HOME</a>
-      <a class="text-white font-label-caps text-label-caps" href="Portfolio.html">PORTFOLIO</a>
-      <a class="text-white font-label-caps text-label-caps" href="Our_Team.html">TEAM</a>
-      <a class="text-white font-label-caps text-label-caps" href="Blog.html">INSIGHTS</a>
-      <a class="text-secondary-container font-label-caps text-label-caps" href="Contact_Us.html">CONTACT</a>
-    </nav>
-  </div>
 </header>
+
+<!-- Mobile Nav Overlay -->
+<div id="nav-overlay" class="fixed inset-0 bg-black/60 z-[60] md:hidden"></div>
+<!-- Mobile Nav Drawer -->
+<div id="nav-drawer" class="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-[#001B3D] z-[70] flex flex-col md:hidden">
+  <div class="flex items-center justify-between px-6 py-5 border-b border-white/10 flex-shrink-0">
+    <a href="Index.html"><img alt="IMEA Venture Capital" class="h-8" src="Static/Images/IMEA_Logo.png"/></a>
+    <button id="nav-close-btn" class="text-white p-1"><span class="material-symbols-outlined">close</span></button>
+  </div>
+  <nav class="flex flex-col px-6 py-8 gap-6 flex-1 overflow-y-auto">
+    <a class="text-white/70 font-label-caps text-label-caps hover:text-white transition-colors" href="Index.html">HOME</a>
+    <a class="text-white/70 font-label-caps text-label-caps hover:text-white transition-colors" href="Portfolio.html">PORTFOLIO</a>
+    <a class="text-white/70 font-label-caps text-label-caps hover:text-white transition-colors" href="Our_Team.html">TEAM</a>
+    <a class="text-white/70 font-label-caps text-label-caps hover:text-white transition-colors" href="Blog.html">INSIGHTS</a>
+    <a class="text-secondary-container font-label-caps text-label-caps border-b border-secondary-container/40 pb-2" href="Contact_Us.html">CONTACT</a>
+  </nav>
+  <div class="px-6 pb-8 flex-shrink-0">
+    <a href="Contact_Us.html" class="block w-full font-label-caps text-label-caps bg-secondary-container text-on-secondary-container px-6 py-4 text-center hover:bg-[#C5A059] hover:text-white transition-colors duration-300">SUBMIT PITCH</a>
+  </div>
+</div>
 
 <main>
 
@@ -247,7 +263,7 @@
     <div class="absolute right-[-120px] top-[-120px] w-[520px] h-[520px] rounded-full border border-[#C5A059]/08 pointer-events-none"></div>
     <div class="absolute right-[-60px] top-[-60px] w-[360px] h-[360px] rounded-full border border-[#C5A059]/06 pointer-events-none"></div>
 
-    <div class="max-w-[1280px] mx-auto px-12 grid grid-cols-12 gap-8 items-end">
+    <div class="max-w-[1280px] mx-auto px-5 md:px-8 lg:px-12 grid grid-cols-12 gap-6 md:gap-8 items-end">
       <div class="col-span-12 md:col-span-7">
         <span class="font-label-caps text-label-caps text-[#C5A059] uppercase block mb-5" style="letter-spacing:0.2em;">Get in Touch</span>
         <h1 class="text-white mb-6" style="font-family:'Newsreader',serif; font-size:clamp(42px,6vw,76px); font-weight:400; line-height:1.05; letter-spacing:-0.02em;">
@@ -260,17 +276,17 @@
       </div>
       <!-- Hero quick stats -->
       <div class="col-span-12 md:col-span-5 md:pb-2 grid grid-cols-3 gap-px bg-white/10 mt-12 md:mt-0">
-        <div class="bg-[#001B3D] p-6 text-center">
-          <span style="font-family:'Newsreader',serif; font-size:36px; font-weight:400; color:#C5A059; display:block; line-height:1;">3</span>
-          <span style="font-family:'Work Sans',sans-serif; font-size:9px; letter-spacing:0.16em; font-weight:600; text-transform:uppercase; color:rgba(255,255,255,0.4); display:block; margin-top:6px;">Global Offices</span>
+        <div class="bg-[#001B3D] p-4 md:p-6 text-center">
+          <span style="font-family:'Newsreader',serif; font-size:clamp(24px,4vw,36px); font-weight:400; color:#C5A059; display:block; line-height:1;">3</span>
+          <span style="font-family:'Work Sans',sans-serif; font-size:9px; letter-spacing:0.12em; font-weight:600; text-transform:uppercase; color:rgba(255,255,255,0.4); display:block; margin-top:6px;">Global Offices</span>
         </div>
-        <div class="bg-[#001B3D] p-6 text-center">
-          <span style="font-family:'Newsreader',serif; font-size:36px; font-weight:400; color:#C5A059; display:block; line-height:1;">48h</span>
-          <span style="font-family:'Work Sans',sans-serif; font-size:9px; letter-spacing:0.16em; font-weight:600; text-transform:uppercase; color:rgba(255,255,255,0.4); display:block; margin-top:6px;">Response Time</span>
+        <div class="bg-[#001B3D] p-4 md:p-6 text-center">
+          <span style="font-family:'Newsreader',serif; font-size:clamp(24px,4vw,36px); font-weight:400; color:#C5A059; display:block; line-height:1;">48h</span>
+          <span style="font-family:'Work Sans',sans-serif; font-size:9px; letter-spacing:0.12em; font-weight:600; text-transform:uppercase; color:rgba(255,255,255,0.4); display:block; margin-top:6px;">Response Time</span>
         </div>
-        <div class="bg-[#001B3D] p-6 text-center">
-          <span style="font-family:'Newsreader',serif; font-size:36px; font-weight:400; color:#C5A059; display:block; line-height:1;">30+</span>
-          <span style="font-family:'Work Sans',sans-serif; font-size:9px; letter-spacing:0.16em; font-weight:600; text-transform:uppercase; color:rgba(255,255,255,0.4); display:block; margin-top:6px;">Portfolio Companies</span>
+        <div class="bg-[#001B3D] p-4 md:p-6 text-center">
+          <span style="font-family:'Newsreader',serif; font-size:clamp(24px,4vw,36px); font-weight:400; color:#C5A059; display:block; line-height:1;">30+</span>
+          <span style="font-family:'Work Sans',sans-serif; font-size:9px; letter-spacing:0.12em; font-weight:600; text-transform:uppercase; color:rgba(255,255,255,0.4); display:block; margin-top:6px;">Portfolio Cos.</span>
         </div>
       </div>
     </div>
@@ -280,7 +296,7 @@
   <!-- HOW WE ENGAGE — 3-step process                     -->
   <!-- ═══════════════════════════════════════════════════ -->
   <section class="border-b border-outline-variant">
-    <div class="max-w-[1280px] mx-auto px-12">
+    <div class="max-w-[1280px] mx-auto px-5 md:px-8 lg:px-12">
       <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-outline-variant">
         <div class="py-10 md:pr-12 reveal">
           <span class="step-num">01</span>
@@ -304,7 +320,7 @@
   <!-- ═══════════════════════════════════════════════════ -->
   <!-- MAIN SECTION — Form + Offices                       -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <section class="max-w-[1280px] mx-auto px-12 py-24 grid grid-cols-12 gap-16">
+  <section class="max-w-[1280px] mx-auto px-5 md:px-8 lg:px-12 py-16 md:py-24 grid grid-cols-12 gap-10 lg:gap-16">
 
     <!-- CONTACT FORM — left -->
     <div class="col-span-12 lg:col-span-7 reveal-left">
@@ -499,7 +515,7 @@
   <!-- ═══════════════════════════════════════════════════ -->
   <section class="bg-[#001B3D] grid-dark py-24 relative overflow-hidden">
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 70% 50%, rgba(197,160,89,0.06) 0%, transparent 65%);"></div>
-    <div class="max-w-[1280px] mx-auto px-12 grid grid-cols-12 gap-10 items-center relative z-10">
+    <div class="max-w-[1280px] mx-auto px-5 md:px-8 lg:px-12 grid grid-cols-12 gap-8 md:gap-10 items-center relative z-10">
       <div class="col-span-12 md:col-span-7 reveal">
         <span class="font-label-caps text-label-caps text-[#C5A059] uppercase block mb-5" style="letter-spacing:0.2em;">For Founders</span>
         <h2 class="text-white mb-5" style="font-family:'Newsreader',serif; font-size:clamp(32px,4vw,52px); font-weight:400; line-height:1.15; letter-spacing:-0.01em;">
@@ -538,7 +554,7 @@
 <!-- FOOTER — same as Portfolio / Our_Team / Blog        -->
 <!-- ═══════════════════════════════════════════════════ -->
 <footer class="bg-[#001B3D] border-t border-[#C5A059]/10">
-  <div class="max-w-[1280px] mx-auto px-12 pt-16 pb-10">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-8 lg:px-12 pt-16 pb-10">
     <div class="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
       <div class="col-span-1 md:col-span-4">
         <a href="Index.html"><img alt="IMEA Venture Capital" class="h-10 mb-6" src="Static/Images/IMEA_Logo.png"/></a>
@@ -611,10 +627,18 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
 
-  // Mobile menu
-  document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-    document.getElementById('mobile-menu').classList.toggle('hidden');
-  });
+  // Mobile nav drawer
+  (function() {
+    const hamburger = document.getElementById('hamburger-btn');
+    const overlay = document.getElementById('nav-overlay');
+    const drawer = document.getElementById('nav-drawer');
+    const closeBtn = document.getElementById('nav-close-btn');
+    function openDrawer() { overlay.classList.add('drawer-open'); drawer.classList.add('drawer-open'); document.body.style.overflow = 'hidden'; }
+    function closeDrawer() { overlay.classList.remove('drawer-open'); drawer.classList.remove('drawer-open'); document.body.style.overflow = ''; }
+    if (hamburger) hamburger.addEventListener('click', openDrawer);
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    if (overlay) overlay.addEventListener('click', closeDrawer);
+  })();
 
   // Form success state
   document.getElementById('contact-form').addEventListener('submit', function(e) {

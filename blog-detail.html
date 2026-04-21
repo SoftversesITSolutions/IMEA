@@ -314,9 +314,23 @@
   /* Body copy link */
   .prose a { color: #775a19; text-decoration: underline; text-decoration-color: rgba(119,90,25,0.3); }
   .prose a:hover { text-decoration-color: #775a19; }
+
+  /* ── MOBILE NAV DRAWER ── */
+  #nav-drawer { transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); }
+  #nav-drawer.drawer-open { transform: translateX(0); }
+  #nav-overlay { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+  #nav-overlay.drawer-open { opacity: 1; pointer-events: auto; }
+
+  /* ── RESPONSIVE: stat callout stacks on mobile ── */
+  @media (max-width: 640px) {
+    .stat-callout { grid-template-columns: 1fr; padding: 20px 16px; }
+    .drop-cap::first-letter { font-size: 3.8rem; }
+    .pull-quote { padding: 16px 20px; }
+    .pull-quote p { font-size: 20px; }
+  }
 </style>
 </head>
-<body class="bg-background text-on-background antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+<body class="bg-background text-on-background antialiased selection:bg-secondary-container selection:text-on-secondary-container overflow-x-hidden">
 
 <!-- Reading Progress Bar -->
 <div id="read-progress"></div>
@@ -329,7 +343,7 @@
 
 <!-- Navbar -->
 <header id="main-nav" class="fixed top-0 w-full z-50 border-b border-white/10 bg-[#001B3D]">
-  <div class="flex justify-between items-center max-w-[1440px] mx-auto px-12 py-5">
+  <div class="flex justify-between items-center max-w-[1440px] mx-auto px-5 md:px-8 lg:px-12 py-5">
     <a href="Index.html"><img alt="IMEA Venture Capital" class="h-10" src="Static/Images/IMEA_Logo.png"/></a>
     <nav class="hidden md:flex gap-8 items-center">
       <a class="text-white pb-1 font-label-caps text-label-caps hover:text-secondary-container transition-colors duration-300" href="Index.html">HOME</a>
@@ -341,21 +355,31 @@
     <button class="hidden md:block font-label-caps text-label-caps bg-secondary-container text-on-secondary-container px-6 py-3 hover:bg-[#C5A059] hover:text-white transition-colors duration-300">
       SUBMIT PITCH
     </button>
-    <button class="md:hidden text-white" id="mobile-menu-btn">
+    <button id="hamburger-btn" class="md:hidden text-white p-1">
       <span class="material-symbols-outlined">menu</span>
     </button>
   </div>
-  <!-- Mobile Menu -->
-  <div class="hidden md:hidden bg-[#001B3D] border-t border-white/10 px-12 py-6" id="mobile-menu">
-    <nav class="flex flex-col gap-5">
-      <a class="text-white font-label-caps text-label-caps" href="Index.html">HOME</a>
-      <a class="text-white font-label-caps text-label-caps" href="Portfolio.html">PORTFOLIO</a>
-      <a class="text-white font-label-caps text-label-caps" href="Our_Team.html">TEAM</a>
-      <a class="text-secondary-container font-label-caps text-label-caps" href="Blog.html">INSIGHTS</a>
-      <a class="text-white font-label-caps text-label-caps" href="Contact_Us.html">CONTACT</a>
-    </nav>
-  </div>
 </header>
+
+<!-- Mobile Nav Overlay -->
+<div id="nav-overlay" class="fixed inset-0 bg-black/60 z-[60] md:hidden"></div>
+<!-- Mobile Nav Drawer -->
+<div id="nav-drawer" class="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-[#001B3D] z-[70] flex flex-col md:hidden">
+  <div class="flex items-center justify-between px-6 py-5 border-b border-white/10 flex-shrink-0">
+    <a href="Index.html"><img alt="IMEA Venture Capital" class="h-8" src="Static/Images/IMEA_Logo.png"/></a>
+    <button id="nav-close-btn" class="text-white p-1"><span class="material-symbols-outlined">close</span></button>
+  </div>
+  <nav class="flex flex-col px-6 py-8 gap-6 flex-1 overflow-y-auto">
+    <a class="text-white/70 font-label-caps text-label-caps hover:text-white transition-colors" href="Index.html">HOME</a>
+    <a class="text-white/70 font-label-caps text-label-caps hover:text-white transition-colors" href="Portfolio.html">PORTFOLIO</a>
+    <a class="text-white/70 font-label-caps text-label-caps hover:text-white transition-colors" href="Our_Team.html">TEAM</a>
+    <a class="text-secondary-container font-label-caps text-label-caps border-b border-secondary-container/40 pb-2" href="Blog.html">INSIGHTS</a>
+    <a class="text-white/70 font-label-caps text-label-caps hover:text-white transition-colors" href="Contact_Us.html">CONTACT</a>
+  </nav>
+  <div class="px-6 pb-8 flex-shrink-0">
+    <a href="Contact_Us.html" class="block w-full font-label-caps text-label-caps bg-secondary-container text-on-secondary-container px-6 py-4 text-center hover:bg-[#C5A059] hover:text-white transition-colors duration-300">SUBMIT PITCH</a>
+  </div>
+</div>
 
 <main>
 
@@ -377,7 +401,7 @@
 
     <!-- Back to Journal link -->
     <div class="absolute top-8 left-0 w-full">
-      <div class="max-w-[1440px] mx-auto px-12">
+      <div class="max-w-[1440px] mx-auto px-5 md:px-8 lg:px-12">
         <a href="Blog.html" class="inline-flex items-center gap-2 text-white/60 hover:text-secondary-container transition-colors duration-300 font-label-caps text-label-caps">
           <span class="material-symbols-outlined text-base">arrow_back</span>
           BACK TO JOURNAL
@@ -386,8 +410,8 @@
     </div>
 
     <!-- Title block at bottom of hero -->
-    <div class="absolute bottom-0 left-0 w-full pb-16">
-      <div class="max-w-[1440px] mx-auto px-12">
+    <div class="absolute bottom-0 left-0 w-full pb-10 md:pb-16">
+      <div class="max-w-[1440px] mx-auto px-5 md:px-8 lg:px-12">
         <!-- Category + volume -->
         <div class="flex items-center gap-4 mb-6">
           <span class="font-label-caps text-label-caps text-secondary-container uppercase">Macro Trends</span>
@@ -419,7 +443,7 @@
   <!-- ═══════════════════════════════════════════════════ -->
   <!-- ARTICLE BODY — two-col: content + sticky sidebar   -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <section class="max-w-[1440px] mx-auto px-12 py-20 grid grid-cols-12 gap-12">
+  <section class="max-w-[1440px] mx-auto px-5 md:px-8 lg:px-12 py-12 md:py-20 grid grid-cols-12 gap-8 md:gap-12">
 
     <!-- LEFT SHARE COLUMN (desktop only) -->
     <aside class="hidden lg:block col-span-1">
@@ -561,7 +585,7 @@
       </div>
 
       <!-- Prev / Next Article Navigation -->
-      <div class="mt-12 grid grid-cols-2 gap-8">
+      <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
         <a href="Blog.html" class="art-nav-card group">
           <span class="font-label-caps text-label-caps text-on-surface-variant uppercase block mb-3">
             <span class="material-symbols-outlined text-sm align-middle mr-1">arrow_back</span>Previous
@@ -658,10 +682,10 @@
   <!-- FURTHER READING                                     -->
   <!-- ═══════════════════════════════════════════════════ -->
   <section class="border-t border-outline-variant py-20">
-    <div class="max-w-[1440px] mx-auto px-12">
+    <div class="max-w-[1440px] mx-auto px-5 md:px-8 lg:px-12">
 
       <!-- Section header -->
-      <div class="flex items-center justify-between mb-14">
+      <div class="flex items-center justify-between mb-10 md:mb-14">
         <div class="flex items-center gap-5">
           <div class="w-6 h-px bg-[#C5A059]"></div>
           <span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Continue Reading</span>
@@ -689,8 +713,8 @@
         <!-- Cards 2 + 3 stacked -->
         <div class="col-span-12 md:col-span-7 flex flex-col gap-8">
 
-          <a href="Blog.html" class="related-card group flex gap-6">
-            <div class="rel-img w-40 flex-shrink-0 bg-surface-variant overflow-hidden" style="height:120px;">
+          <a href="Blog.html" class="related-card group flex flex-col sm:flex-row gap-4 sm:gap-6">
+            <div class="rel-img w-full sm:w-40 flex-shrink-0 bg-surface-variant overflow-hidden" style="height:160px;">
               <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&q=80" alt="Open Banking" class="w-full h-full object-cover grayscale-[20%]"/>
             </div>
             <div class="border-t border-outline-variant pt-4 flex-1">
@@ -699,8 +723,8 @@
             </div>
           </a>
 
-          <a href="Blog.html" class="related-card group flex gap-6">
-            <div class="rel-img w-40 flex-shrink-0 bg-surface-variant overflow-hidden" style="height:120px;">
+          <a href="Blog.html" class="related-card group flex flex-col sm:flex-row gap-4 sm:gap-6">
+            <div class="rel-img w-full sm:w-40 flex-shrink-0 bg-surface-variant overflow-hidden" style="height:160px;">
               <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80" alt="AgriTech" class="w-full h-full object-cover grayscale-[20%]"/>
             </div>
             <div class="border-t border-outline-variant pt-4 flex-1">
@@ -709,8 +733,8 @@
             </div>
           </a>
 
-          <a href="Blog.html" class="related-card group flex gap-6">
-            <div class="rel-img w-40 flex-shrink-0 bg-surface-variant overflow-hidden" style="height:120px;">
+          <a href="Blog.html" class="related-card group flex flex-col sm:flex-row gap-4 sm:gap-6">
+            <div class="rel-img w-full sm:w-40 flex-shrink-0 bg-surface-variant overflow-hidden" style="height:160px;">
               <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?w=400&q=80" alt="Sovereign Wealth" class="w-full h-full object-cover grayscale-[20%]"/>
             </div>
             <div class="border-t border-outline-variant pt-4 flex-1">
@@ -731,7 +755,7 @@
 <!-- FOOTER                                              -->
 <!-- ═══════════════════════════════════════════════════ -->
 <footer class="bg-[#001B3D] border-t border-[#C5A059]/10">
-  <div class="max-w-[1280px] mx-auto px-12 pt-16 pb-10">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-8 lg:px-12 pt-16 pb-10">
     <div class="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
       <div class="col-span-1 md:col-span-4">
         <a href="Index.html"><img alt="IMEA Venture Capital" class="h-10 mb-6" src="Static/Images/IMEA_Logo.png"/></a>
@@ -830,10 +854,18 @@
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // ── Mobile menu ───────────────────────────────────────
-  document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-    document.getElementById('mobile-menu').classList.toggle('hidden');
-  });
+  // ── Mobile nav drawer ────────────────────────────────
+  (function() {
+    const hamburger = document.getElementById('hamburger-btn');
+    const overlay = document.getElementById('nav-overlay');
+    const drawer = document.getElementById('nav-drawer');
+    const closeBtn = document.getElementById('nav-close-btn');
+    function openDrawer() { overlay.classList.add('drawer-open'); drawer.classList.add('drawer-open'); document.body.style.overflow = 'hidden'; }
+    function closeDrawer() { overlay.classList.remove('drawer-open'); drawer.classList.remove('drawer-open'); document.body.style.overflow = ''; }
+    if (hamburger) hamburger.addEventListener('click', openDrawer);
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    if (overlay) overlay.addEventListener('click', closeDrawer);
+  })();
 
   // ── Copy link share button ────────────────────────────
   document.querySelectorAll('.share-btn').forEach(btn => {
