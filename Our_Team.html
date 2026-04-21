@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Our Team — IMEA Venture Capital</title>
+<!-- Fonts: identical to homepage -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&family=Work+Sans:wght@500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "secondary-fixed": "#ffdea5", "surface-container-highest": "#e4e2e2",
+          "surface": "#fbf9f8", "surface-variant": "#e4e2e2", "secondary": "#775a19",
+          "on-primary-fixed-variant": "#31476b", "on-tertiary-container": "#85847e",
+          "on-surface": "#1b1c1c", "on-secondary-fixed": "#261900",
+          "on-secondary-container": "#785a1a", "on-secondary": "#ffffff",
+          "on-tertiary": "#ffffff", "on-primary": "#ffffff",
+          "on-surface-variant": "#44474e", "background": "#fbf9f8",
+          "tertiary-container": "#1c1c18", "on-primary-fixed": "#001b3d",
+          "surface-container": "#efeded", "inverse-primary": "#b1c7f2",
+          "surface-tint": "#495f84", "tertiary-fixed-dim": "#c9c6c0",
+          "surface-bright": "#fbf9f8", "on-primary-container": "#6f84ac",
+          "primary-fixed": "#d6e3ff", "secondary-container": "#fed488",
+          "surface-dim": "#dbd9d9", "error": "#ba1a1a", "on-error": "#ffffff",
+          "primary-container": "#001b3d", "tertiary": "#000100",
+          "on-background": "#1b1c1c", "on-tertiary-fixed-variant": "#474742",
+          "secondary-fixed-dim": "#e9c176", "surface-container-lowest": "#ffffff",
+          "on-secondary-fixed-variant": "#5d4201", "primary-fixed-dim": "#b1c7f2",
+          "on-tertiary-fixed": "#1c1c18", "primary": "#000000",
+          "surface-container-high": "#eae8e7", "inverse-surface": "#303030",
+          "surface-container-low": "#f5f3f3", "tertiary-fixed": "#e5e2db",
+          "inverse-on-surface": "#f2f0f0", "outline": "#74777f",
+          "outline-variant": "#c4c6cf", "error-container": "#ffdad6",
+          "on-error-container": "#93000a"
+        },
+        "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        "spacing": {
+          "section-padding": "120px", "gutter": "32px",
+          "container-max-width": "1280px", "margin": "64px", "unit": "8px"
+        },
+        "fontFamily": {
+          "headline-md": ["Newsreader"], "headline-lg": ["Newsreader"],
+          "body-md": ["Manrope"], "display-xl": ["Newsreader"],
+          "label-caps": ["Work Sans"], "body-lg": ["Manrope"]
+        },
+        "fontSize": {
+          "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "500"}],
+          "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "500"}],
+          "body-md":     ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "display-xl":  ["84px", {"lineHeight": "1.05", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+          "label-caps":  ["12px", {"lineHeight": "1.4", "letterSpacing": "0.1em", "fontWeight": "600"}],
+          "body-lg":     ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  /* ── SCROLL REVEALS ── */
+  .reveal, .reveal-left, .reveal-right, .reveal-scale {
+    opacity: 0;
+    transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal       { transform: translateY(36px); }
+  .reveal-left  { transform: translateX(-44px); }
+  .reveal-right { transform: translateX(44px); }
+  .reveal-scale { transform: scale(0.95); }
+  .reveal.in, .reveal-left.in, .reveal-right.in, .reveal-scale.in { opacity: 1; transform: none; }
+  .d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.3s}
+  .d4{transition-delay:.4s} .d5{transition-delay:.5s} .d6{transition-delay:.6s}
+
+  /* ── GRID TEXTURES ── */
+  .grid-dark {
+    background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  .grid-light {
+    background-image: linear-gradient(rgba(0,27,61,0.04) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0,27,61,0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  /* ── PARTNER CARD ── */
+  .partner-card .pc-img {
+    transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), filter 0.5s ease;
+    filter: grayscale(55%);
+  }
+  .partner-card:hover .pc-img { transform: scale(1.05); filter: grayscale(0%); }
+  .partner-card .pc-overlay {
+    transition: opacity 0.45s ease;
+    opacity: 0;
+  }
+  .partner-card:hover .pc-overlay { opacity: 1; }
+
+  /* ── CORE TEAM ROW ── */
+  .team-row {
+    transition: background 0.25s ease, padding-left 0.3s ease;
+  }
+  .team-row:hover { background: rgba(0,27,61,0.03); padding-left: 16px; }
+  .team-row .tr-arrow { transition: transform 0.3s ease, color 0.25s ease; }
+  .team-row:hover .tr-arrow { transform: translateX(4px); color: #001B3D; }
+
+  /* ── VALUE CARD ── */
+  .value-card {
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease, border-color 0.3s ease;
+  }
+  .value-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 48px rgba(0,27,61,0.1);
+    border-color: rgba(197,160,89,0.3);
+  }
+
+  /* ── GOLD DIVIDER ── */
+  .gold-divider { width: 48px; height: 2px; background: linear-gradient(to right, #C5A059, rgba(197,160,89,0)); }
+
+  /* ── PRINCIPLE NUMBER ── */
+  .principle-num {
+    font-family: 'Newsreader', serif;
+    font-size: 72px;
+    font-weight: 300;
+    line-height: 1;
+    color: rgba(0,27,61,0.06);
+    position: absolute;
+    top: -8px;
+    left: -4px;
+    user-select: none;
+  }
+
+  /* ── PROGRESS BAR ── */
+  #read-progress {
+    position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+    background: linear-gradient(to right, #C5A059, #fed488);
+    z-index: 9999; transition: width 0.1s linear;
+  }
+
+  /* ── NAVBAR SCROLL ── */
+  .navbar-blur { backdrop-filter: blur(12px); background-color: rgba(0,27,61,0.92) !important; }
+
+  /* ── PARALLAX ── */
+  .parallax-bg { background-attachment: fixed; background-size: cover; background-position: center; }
+  @media (max-width: 768px) { .parallax-bg { background-attachment: scroll; } }
+
+  /* ── STAT COUNTER ── */
+  @keyframes count-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .stat-in { animation: count-up 0.6s ease forwards; }
+
+  /* ── CTA GRADIENT ── */
+  @keyframes grad-shift { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+  .cta-grad {
+    background: linear-gradient(-45deg, #001B3D, #002952, #001020, #001B3D);
+    background-size: 400% 400%;
+    animation: grad-shift 18s ease infinite;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(0,27,61,0.2); border-radius: 3px; }
+</style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-secondary-container selection:text-on-secondary-container overflow-x-hidden">
+
+<div id="read-progress"></div>
+
+<!-- ════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════ -->
+<header id="navbar" class="fixed top-0 w-full z-50 border-b border-outline-variant/30 bg-[#001B3D]">
+  <div class="flex justify-between items-center max-w-[1440px] mx-auto px-12 py-6">
+    <a href="Index.html"><img alt="IMEA Venture Capital" class="h-10" src="Static/Images/IMEA_Logo.png"/></a>
+    <nav class="hidden md:flex gap-8 items-center">
+      <a class="text-white pb-1 font-label-caps text-label-caps hover:text-secondary-container transition-colors duration-300" href="Index.html">HOME</a>
+      <a class="text-white pb-1 font-label-caps text-label-caps hover:text-secondary-container transition-colors duration-300" href="Portfolio.html">PORTFOLIO</a>
+      <a class="text-secondary-container border-b border-secondary-container/50 pb-1 font-label-caps text-label-caps hover:text-secondary-container transition-colors duration-300" href="Our_Team.html">TEAM</a>
+      <a class="text-white pb-1 font-label-caps text-label-caps hover:text-secondary-container transition-colors duration-300" href="Blog.html">INSIGHTS</a>
+      <a class="text-white pb-1 font-label-caps text-label-caps hover:text-secondary-container transition-colors duration-300" href="Contact_Us.html">CONTACT</a>
+    </nav>
+    <button class="hidden md:block font-label-caps text-label-caps bg-secondary-container text-on-secondary-container px-6 py-3 hover:bg-secondary hover:text-white transition-colors duration-300">
+      SUBMIT PITCH
+    </button>
+    <button class="md:hidden text-white"><span class="material-symbols-outlined">menu</span></button>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<section class="relative bg-[#001B3D] pt-[90px] overflow-hidden">
+  <div class="absolute inset-0 grid-dark opacity-70 pointer-events-none"></div>
+  <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-[#C5A059]/4 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/35 to-transparent"></div>
+
+  <div class="relative max-w-[1280px] mx-auto px-8 pt-24 pb-24">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
+      <div class="col-span-1 md:col-span-7 reveal-left">
+        <span class="font-['Work_Sans'] text-[11px] font-semibold tracking-[0.25em] uppercase text-[#C5A059] mb-6 flex items-center gap-4">
+          <span class="w-8 h-px bg-[#C5A059]"></span>
+          About IMEA · Est. 2018
+        </span>
+        <h1 class="font-['Newsreader'] text-[60px] md:text-[80px] lg:text-[96px] leading-[0.93] tracking-tight text-white mb-8">
+          Architects of<br/><span class="italic font-light text-[#E2D1B3]">Regional Growth.</span>
+        </h1>
+        <p class="font-['Manrope'] text-[17px] text-white/55 max-w-xl leading-relaxed font-light">
+          A team of operators, founders, and investors united by a single conviction: the next generation of world-defining companies will be built across India, the Middle East, and Africa.
+        </p>
+      </div>
+      <!-- Founding year badge -->
+      <div class="col-span-1 md:col-span-5 flex md:justify-end items-end reveal-right">
+        <div class="grid grid-cols-2 gap-px border border-[#C5A059]/15">
+          <div class="bg-[#001B3D] text-center py-8 px-6 border-r border-b border-[#C5A059]/10">
+            <div class="font-['Newsreader'] text-[38px] font-light text-[#C5A059] leading-none mb-2">6+</div>
+            <div class="font-['Work_Sans'] text-[9px] tracking-[0.2em] uppercase text-white/30">Years Active</div>
+          </div>
+          <div class="bg-[#001B3D] text-center py-8 px-6 border-b border-[#C5A059]/10">
+            <div class="font-['Newsreader'] text-[38px] font-light text-[#C5A059] leading-none mb-2">14</div>
+            <div class="font-['Work_Sans'] text-[9px] tracking-[0.2em] uppercase text-white/30">Team Members</div>
+          </div>
+          <div class="bg-[#001B3D] text-center py-8 px-6 border-r border-[#C5A059]/10">
+            <div class="font-['Newsreader'] text-[38px] font-light text-[#C5A059] leading-none mb-2">3</div>
+            <div class="font-['Work_Sans'] text-[9px] tracking-[0.2em] uppercase text-white/30">Offices</div>
+          </div>
+          <div class="bg-[#001B3D] text-center py-8 px-6 border-[#C5A059]/10">
+            <div class="font-['Newsreader'] text-[38px] font-light text-[#C5A059] leading-none mb-2">18</div>
+            <div class="font-['Work_Sans'] text-[9px] tracking-[0.2em] uppercase text-white/30">Countries</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     OUR STORY
+════════════════════════════════════════ -->
+<section class="py-32 bg-surface grid-light relative">
+  <div class="max-w-[1280px] mx-auto px-8">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
+      <!-- Left: text -->
+      <div class="col-span-1 md:col-span-6 reveal-left">
+        <span class="font-['Work_Sans'] text-[10px] tracking-[0.22em] uppercase text-secondary mb-3 block">Our Story</span>
+        <div class="gold-divider mb-8"></div>
+        <h2 class="font-['Newsreader'] text-[40px] md:text-[52px] font-light text-[#001B3D] leading-[1.1] mb-8">
+          Born from the belief that<br/><span class="italic">the world's best founders</span><br/>are building here.
+        </h2>
+        <p class="font-['Manrope'] text-[16px] text-on-surface-variant leading-relaxed mb-6">
+          IMEA Venture Capital was founded in Dubai in 2018 by a team of former investment bankers, operators, and founders who had seen firsthand how underserved the region's entrepreneurs were by global capital.
+        </p>
+        <p class="font-['Manrope'] text-[16px] text-on-surface-variant leading-relaxed mb-10">
+          We set out to build a different kind of venture firm — one that combines the analytical rigor of institutional finance with the on-the-ground fluency that only comes from living and working in the markets we invest in. Six years and $2.1B later, we remain committed to that founding principle.
+        </p>
+        <a class="group inline-flex items-center gap-3 font-['Work_Sans'] text-[11px] tracking-[0.18em] uppercase text-[#001B3D] border-b border-[#001B3D]/25 pb-1 hover:text-secondary hover:border-secondary transition-all duration-300" href="Contact_Us.html">
+          Meet the Team
+          <span class="material-symbols-outlined text-[15px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+        </a>
+      </div>
+      <!-- Right: architectural image -->
+      <div class="col-span-1 md:col-span-6 reveal-right">
+        <div class="relative">
+          <div class="aspect-[4/3] overflow-hidden shadow-[20px_20px_0px_rgba(0,27,61,0.06)]">
+            <img alt="IMEA team office — Dubai" class="w-full h-full object-cover grayscale-[20%] contrast-[1.05] transition-transform duration-700 hover:scale-105"
+                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdeK5GeY_wlBLIZBhcVHN1OYqFUG2xEJ-K_JAw3FpP4uNH1P_u8xYd2qswwyGkAUofbAKsra5Ei5bVehMdUFiNcGQO-hmsceUK1bmE-v6X56jQrrI4LqlxEzELURoePLpLjdFnKhueccukDy0muPRFEO-qynujtF1jRemCgMR0HtyHA60p_TQHcPjx6PAUKyGyWVVQl6WjroYrb0KI9bT-312fhBRITZwr99AmDwvzC_z9o7corxq9mxPemw0TcsWx2lTk-HRXqqo"/>
+            <div class="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-[#C5A059]/50"></div>
+            <div class="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-[#C5A059]/50"></div>
+          </div>
+          <!-- Floating label -->
+          <div class="absolute -bottom-5 -left-5 bg-[#001B3D] border border-[#C5A059]/25 px-8 py-4 hidden md:block">
+            <div class="font-['Work_Sans'] text-[9px] tracking-[0.22em] uppercase text-[#C5A059]/70">HQ · Dubai, DIFC</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     MISSION, VISION, VALUES
+════════════════════════════════════════ -->
+<section class="py-32 bg-[#001B3D] grid-dark relative overflow-hidden">
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/35 to-transparent"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/35 to-transparent"></div>
+
+  <div class="max-w-[1280px] mx-auto px-8">
+    <div class="text-center mb-20 reveal">
+      <span class="font-['Work_Sans'] text-[10px] tracking-[0.22em] uppercase text-[#C5A059] mb-3 block">What Drives Us</span>
+      <div class="gold-divider mx-auto mb-8"></div>
+      <h2 class="font-['Newsreader'] text-[40px] md:text-[52px] font-light text-white leading-tight">
+        Our Mission,<br/><span class="italic text-[#E2D1B3]">Vision &amp; Values</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Mission -->
+      <div class="value-card group bg-[#001020] border border-[#C5A059]/12 p-10 cursor-default reveal d1">
+        <div class="w-12 h-12 border border-[#C5A059]/30 flex items-center justify-center mb-8 group-hover:bg-[#C5A059]/10 transition-colors">
+          <span class="material-symbols-outlined text-[#C5A059]/60 text-[22px]">rocket_launch</span>
+        </div>
+        <span class="font-['Work_Sans'] text-[9px] tracking-[0.25em] uppercase text-[#C5A059]/50 mb-4 block">Mission</span>
+        <h3 class="font-['Newsreader'] text-[26px] font-light text-white mb-5 leading-tight">
+          To fund and build the companies that will define the next era of global commerce.
+        </h3>
+        <div class="h-px bg-gradient-to-r from-[#C5A059]/30 to-transparent mb-5"></div>
+        <p class="font-['Manrope'] text-[14px] text-white/40 leading-relaxed">
+          We deploy patient capital and hands-on expertise to unlock the full potential of visionary founders across IMEA — markets that hold 60% of the world's population and some of its fastest-growing economies.
+        </p>
+      </div>
+
+      <!-- Vision -->
+      <div class="value-card group bg-[#001020] border border-[#C5A059]/12 p-10 cursor-default reveal d2">
+        <div class="w-12 h-12 border border-[#C5A059]/30 flex items-center justify-center mb-8 group-hover:bg-[#C5A059]/10 transition-colors">
+          <span class="material-symbols-outlined text-[#C5A059]/60 text-[22px]">visibility</span>
+        </div>
+        <span class="font-['Work_Sans'] text-[9px] tracking-[0.25em] uppercase text-[#C5A059]/50 mb-4 block">Vision</span>
+        <h3 class="font-['Newsreader'] text-[26px] font-light text-white mb-5 leading-tight">
+          A world where the most transformative companies are built in every corner of the globe.
+        </h3>
+        <div class="h-px bg-gradient-to-r from-[#C5A059]/30 to-transparent mb-5"></div>
+        <p class="font-['Manrope'] text-[14px] text-white/40 leading-relaxed">
+          We envision IMEA as not just an investment geography, but the origin point of solutions that reshape healthcare, energy, finance, and logistics for billions of people worldwide.
+        </p>
+      </div>
+
+      <!-- Values -->
+      <div class="value-card group bg-[#001020] border border-[#C5A059]/12 p-10 cursor-default reveal d3">
+        <div class="w-12 h-12 border border-[#C5A059]/30 flex items-center justify-center mb-8 group-hover:bg-[#C5A059]/10 transition-colors">
+          <span class="material-symbols-outlined text-[#C5A059]/60 text-[22px]">diamond</span>
+        </div>
+        <span class="font-['Work_Sans'] text-[9px] tracking-[0.25em] uppercase text-[#C5A059]/50 mb-4 block">Values</span>
+        <h3 class="font-['Newsreader'] text-[26px] font-light text-white mb-5 leading-tight">
+          Conviction. Integrity. Long-term alignment.
+        </h3>
+        <div class="h-px bg-gradient-to-r from-[#C5A059]/30 to-transparent mb-5"></div>
+        <div class="flex flex-col gap-3">
+          <div class="flex items-start gap-3">
+            <div class="w-1 h-1 bg-[#C5A059]/50 rounded-full mt-2 flex-shrink-0"></div>
+            <p class="font-['Manrope'] text-[14px] text-white/40 leading-relaxed"><span class="text-white/65">Founder-first:</span> we serve the founders we back, not the other way around.</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-1 h-1 bg-[#C5A059]/50 rounded-full mt-2 flex-shrink-0"></div>
+            <p class="font-['Manrope'] text-[14px] text-white/40 leading-relaxed"><span class="text-white/65">Radical transparency:</span> we say what we believe, quickly and clearly.</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-1 h-1 bg-[#C5A059]/50 rounded-full mt-2 flex-shrink-0"></div>
+            <p class="font-['Manrope'] text-[14px] text-white/40 leading-relaxed"><span class="text-white/65">10-year thinking:</span> we build for generational wealth, not quarterly returns.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     INVESTMENT PHILOSOPHY
+════════════════════════════════════════ -->
+<section class="py-32 bg-surface grid-light relative">
+  <div class="max-w-[1280px] mx-auto px-8">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-16">
+      <!-- Left: sticky label -->
+      <div class="col-span-1 md:col-span-4 reveal-left">
+        <span class="font-['Work_Sans'] text-[10px] tracking-[0.22em] uppercase text-secondary mb-3 block">How We Think</span>
+        <div class="gold-divider mb-8"></div>
+        <h2 class="font-['Newsreader'] text-[40px] md:text-[48px] font-light text-[#001B3D] leading-tight mb-8">
+          Investment<br/><span class="italic">Philosophy</span>
+        </h2>
+        <p class="font-['Manrope'] text-[15px] text-on-surface-variant leading-relaxed">
+          Our approach is built on four interlocking principles that guide every decision from first meeting to final exit.
+        </p>
+      </div>
+
+      <!-- Right: principles list -->
+      <div class="col-span-1 md:col-span-8">
+        <!-- Principle 1 -->
+        <div class="relative pl-16 pb-14 border-b border-outline-variant/30 mb-14 reveal d1">
+          <span class="principle-num">01</span>
+          <span class="font-['Work_Sans'] text-[10px] tracking-[0.22em] uppercase text-secondary mb-3 block">Thesis-Driven</span>
+          <h3 class="font-['Newsreader'] text-[26px] font-light text-[#001B3D] mb-4">We invest in inevitabilities, not trends.</h3>
+          <p class="font-['Manrope'] text-[15px] text-on-surface-variant leading-relaxed">
+            Before any deal, we form a long-form investment thesis on the sector, the timing, and the structural tailwinds at play. We do not chase deal flow — we create it by publishing conviction before it becomes consensus.
+          </p>
+        </div>
+        <!-- Principle 2 -->
+        <div class="relative pl-16 pb-14 border-b border-outline-variant/30 mb-14 reveal d2">
+          <span class="principle-num">02</span>
+          <span class="font-['Work_Sans'] text-[10px] tracking-[0.22em] uppercase text-secondary mb-3 block">Operator-Led</span>
+          <h3 class="font-['Newsreader'] text-[26px] font-light text-[#001B3D] mb-4">We have built companies. We know what hard looks like.</h3>
+          <p class="font-['Manrope'] text-[15px] text-on-surface-variant leading-relaxed">
+            Every partner on our team has either founded, scaled, or operated a business in an emerging market. That experience is what separates advice that sounds right from advice that actually works on the ground.
+          </p>
+        </div>
+        <!-- Principle 3 -->
+        <div class="relative pl-16 pb-14 border-b border-outline-variant/30 mb-14 reveal d3">
+          <span class="principle-num">03</span>
+          <span class="font-['Work_Sans'] text-[10px] tracking-[0.22em] uppercase text-secondary mb-3 block">Network as Moat</span>
+          <h3 class="font-['Newsreader'] text-[26px] font-light text-[#001B3D] mb-4">Our portfolio companies benefit from each other.</h3>
+          <p class="font-['Manrope'] text-[15px] text-on-surface-variant leading-relaxed">
+            We actively engineer collaboration between our portfolio companies — shared customers, joint ventures, talent referrals. The IMEA network is a strategic asset that compounds in value as we grow.
+          </p>
+        </div>
+        <!-- Principle 4 -->
+        <div class="relative pl-16 reveal d4">
+          <span class="principle-num">04</span>
+          <span class="font-['Work_Sans'] text-[10px] tracking-[0.22em] uppercase text-secondary mb-3 block">Responsible Capital</span>
+          <h3 class="font-['Newsreader'] text-[26px] font-light text-[#001B3D] mb-4">Profit and purpose are not in conflict.</h3>
+          <p class="font-['Manrope'] text-[15px] text-on-surface-variant leading-relaxed">
+            Every investment is evaluated through an ESG lens. We believe the most durable businesses are those that solve real problems for real communities — and that responsible investing generates superior risk-adjusted returns over time.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     PARTNER PROFILES
+════════════════════════════════════════ -->
+<section class="py-32 bg-[#001B3D] grid-dark relative overflow-hidden">
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/35 to-transparent"></div>
+
+  <div class="max-w-[1280px] mx-auto px-8">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-20">
+      <div class="reveal-left">
+        <span class="font-['Work_Sans'] text-[10px] tracking-[0.22em] uppercase text-[#C5A059] mb-3 block">Leadership</span>
+        <div class="gold-divider mb-6"></div>
+        <h2 class="font-['Newsreader'] text-[40px] md:text-[52px] font-light text-white leading-tight">
+          The Partners
+        </h2>
+      </div>
+      <span class="font-['Work_Sans'] text-[10px] tracking-[0.2em] uppercase text-white/25 mt-6 md:mt-0 reveal-right">01 / Executive Team</span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Partner 1: Elias Rahal -->
+      <article class="partner-card group cursor-pointer reveal d1">
+        <div class="relative overflow-hidden mb-6 aspect-[3/4]">
+          <img alt="Elias Rahal — Managing Partner, MENA"
+               class="pc-img w-full h-full object-cover"
+               src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4cJyZLFNUhlWphyevaBfP6acbFO5xu_52mkUZfbOsDXKVamefihh8fWFvEWK4hoZvJdcUJ8ddW0Z9m5iirXjHf8XpZ_Cz_kfKItaiQWBH56bDpZUzoUAo5fK3iqWioBXT_0IoZ-UQobJzLPzED2B7IFuqtAx4fkeFNFEkcNeX8TmkpPkpqqnY-lPOYLGPy6EA93HT3ySInr__hxhPhIe4ZoVaUgAzemyNrtqgwttuEoWRy6UQexS5qi82uPmD2te9tUTJ9KgmFF0"/>
+          <!-- Overlay -->
+          <div class="pc-overlay absolute inset-0 bg-[#001B3D]/85 backdrop-blur-sm flex flex-col justify-between p-8">
+            <div class="flex justify-end">
+              <div class="w-8 h-8 border border-[#C5A059]/40 flex items-center justify-center">
+                <span class="material-symbols-outlined text-[#C5A059] text-[16px]">open_in_new</span>
+              </div>
+            </div>
+            <div>
+              <p class="font-['Manrope'] text-[14px] text-white/70 leading-relaxed mb-6">
+                Over 20 years structuring sovereign wealth partnerships across the GCC. Former Managing Director at a Tier 1 global investment bank, responsible for $8B+ in regional transactions.
+              </p>
+              <span class="inline-flex items-center gap-2 font-['Work_Sans'] text-[10px] tracking-[0.18em] uppercase text-[#C5A059] border-b border-[#C5A059]/30 pb-1">
+                LinkedIn Profile
+                <span class="material-symbols-outlined text-[13px]">arrow_outward</span>
+              </span>
+            </div>
+          </div>
+          <!-- Bottom gold line -->
+          <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#C5A059] to-[#C5A059]/0"></div>
+        </div>
+        <h3 class="font-['Newsreader'] text-[24px] font-light text-white mb-1">Elias Rahal</h3>
+        <p class="font-['Work_Sans'] text-[10px] tracking-[0.18em] uppercase text-[#C5A059]/55 mb-3">Managing Partner, MENA</p>
+        <p class="font-['Manrope'] text-[13px] text-white/30 leading-relaxed">Dubai · GCC Sovereign Capital · Investment Banking</p>
+      </article>
+
+      <!-- Partner 2: Amina Diallo -->
+      <article class="partner-card group cursor-pointer reveal d2">
+        <div class="relative overflow-hidden mb-6 aspect-[3/4]">
+          <img alt="Amina Diallo — General Partner, Africa"
+               class="pc-img w-full h-full object-cover"
+               src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyQnoFy-MQSQjORyTPlmAy6wF4wAqySzE7oUsh-z2bUru-mqsQbUotP-2QY18_QNygIZl8MXMSnXVUB6tGqEk0BWuJv8gGzKlmWmYS4WrS5DcYRBs1df_1HYCODyJNlrUvqTsI-b8lvcaX5Z1NDRjFQXn_iY_fsfKMM8ccFPVSywEdOG8HCzyFrwbOs116ac2itv0bLrc5w73Q81SlYzJFVWEFFmyfzftq0AuxKWEfOqbv66-i9DD9ciUhcKof40dFVxgJ1C853Rc"/>
+          <div class="pc-overlay absolute inset-0 bg-[#001B3D]/85 backdrop-blur-sm flex flex-col justify-between p-8">
+            <div class="flex justify-end">
+              <div class="w-8 h-8 border border-[#C5A059]/40 flex items-center justify-center">
+                <span class="material-symbols-outlined text-[#C5A059] text-[16px]">open_in_new</span>
+              </div>
+            </div>
+            <div>
+              <p class="font-['Manrope'] text-[14px] text-white/70 leading-relaxed mb-6">
+                Pioneered early-stage fintech investments in Sub-Saharan Africa. Leads our pan-African deployment strategy with a focus on digital infrastructure and mobile-first financial services.
+              </p>
+              <span class="inline-flex items-center gap-2 font-['Work_Sans'] text-[10px] tracking-[0.18em] uppercase text-[#C5A059] border-b border-[#C5A059]/30 pb-1">
+                LinkedIn Profile
+                <span class="material-symbols-outlined text-[13px]">arrow_outward</span>
+              </span>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#C5A059] to-[#C5A059]/0"></div>
+        </div>
+        <h3 class="font-['Newsreader'] text-[24px] font-light text-white mb-1">Amina Diallo</h3>
+        <p class="font-['Work_Sans'] text-[10px] tracking-[0.18em] uppercase text-[#C5A059]/55 mb-3">General Partner, Africa</p>
+        <p class="font-['Manrope'] text-[13px] text-white/30 leading-relaxed">Lagos · Pan-African FinTech · Digital Infrastructure</p>
+      </article>
+
+      <!-- Partner 3: Vikram Sharma -->
+      <article class="partner-card group cursor-pointer reveal d3">
+        <div class="relative overflow-hidden mb-6 aspect-[3/4]">
+          <img alt="Vikram Sharma — General Partner, India"
+               class="pc-img w-full h-full object-cover"
+               src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdw6efauJT7ZZGCPOwwFR4pBFD7HVp3Z2BzTQxJamtXpSVz-LSsy_USFLA-etZaGemi0cseVOA_1NLXHSpIilBFnZ8t3T8mGVRC-lMCwdcU00Ax17h-gxlWU9rza6zASCWyyJEGFqO5a0zkrcQPKF7qc70CzSq2qfoqltKuwZuWv3zxxUFMZHbY3qYaPALRz4Yi8SENqJKBpXec3GYF2ciKym46OuytV4975LMwZWNt4oiZBSkj6E3HAjZr7R-g48jFMQ6i6j7e6I"/>
+          <div class="pc-overlay absolute inset-0 bg-[#001B3D]/85 backdrop-blur-sm flex flex-col justify-between p-8">
+            <div class="flex justify-end">
+              <div class="w-8 h-8 border border-[#C5A059]/40 flex items-center justify-center">
+                <span class="material-symbols-outlined text-[#C5A059] text-[16px]">open_in_new</span>
+              </div>
+            </div>
+            <div>
+              <p class="font-['Manrope'] text-[14px] text-white/70 leading-relaxed mb-6">
+                Specializes in SaaS and deep tech. Scaled two Indian unicorns from seed to IPO. Focused on cross-border expansion corridors between India, Southeast Asia, and the Middle East.
+              </p>
+              <span class="inline-flex items-center gap-2 font-['Work_Sans'] text-[10px] tracking-[0.18em] uppercase text-[#C5A059] border-b border-[#C5A059]/30 pb-1">
+                LinkedIn Profile
+                <span class="material-symbols-outlined text-[13px]">arrow_outward</span>
+              </span>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#C5A059] to-[#C5A059]/0"></div>
+        </div>
+        <h3 class="font-['Newsreader'] text-[24px] font-light text-white mb-1">Vikram Sharma</h3>
+        <p class="font-['Work_Sans'] text-[10px] tracking-[0.18em] uppercase text-[#C5A059]/55 mb-3">General Partner, India</p>
+        <p class="font-['Manrope'] text-[13px] text-white/30 leading-relaxed">Mumbai · SaaS · DeepTech · Cross-border Expansion</p>
+      </article>
+    </div>
+  </div>
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/35 to-transparent"></div>
+</section>
+
+<!-- ════════════════════════════════════════
+     CORE TEAM LIST
+════════════════════════════════════════ -->
+<section class="py-32 bg-surface grid-light relative">
+  <div class="max-w-[1280px] mx-auto px-8">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+      <div class="reveal-left">
+        <span class="font-['Work_Sans'] text-[10px] tracking-[0.22em] uppercase text-secondary mb-3 block">Operations &amp; Strategy</span>
+        <div class="gold-divider mb-6"></div>
+        <h2 class="font-['Newsreader'] text-[40px] md:text-[48px] font-light text-[#001B3D] leading-tight">Core Team</h2>
+      </div>
+      <span class="font-['Work_Sans'] text-[10px] tracking-[0.2em] uppercase text-on-surface-variant mt-6 md:mt-0 reveal-right">02 / Core Team</span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-16">
+      <!-- Left: context text -->
+      <div class="md:col-span-4 reveal-left d1">
+        <p class="font-['Manrope'] text-[16px] text-on-surface-variant leading-relaxed">
+          Our operational leaders provide specialized expertise in regulatory compliance, talent acquisition, portfolio support, and market-entry strategy across complex jurisdictions.
+        </p>
+      </div>
+
+      <!-- Right: team list -->
+      <div class="md:col-span-8 flex flex-col reveal d2">
+        <!-- Row 1 -->
+        <div class="team-row group flex flex-col sm:flex-row justify-between sm:items-center py-7 border-b border-outline-variant/30 cursor-pointer rounded-sm transition-all duration-300 pr-4">
+          <div>
+            <h4 class="font-['Newsreader'] text-[26px] font-light text-[#001B3D] group-hover:text-secondary transition-colors duration-300">Sarah O'Connor</h4>
+            <div class="flex items-center gap-3 mt-2">
+              <span class="font-['Work_Sans'] text-[10px] tracking-[0.15em] uppercase text-on-surface-variant">Head of Regulatory Affairs</span>
+              <span class="font-['Manrope'] text-[12px] text-outline">· Dublin &amp; Dubai</span>
+            </div>
+          </div>
+          <span class="material-symbols-outlined tr-arrow text-outline mt-4 sm:mt-0">arrow_forward</span>
+        </div>
+        <!-- Row 2 -->
+        <div class="team-row group flex flex-col sm:flex-row justify-between sm:items-center py-7 border-b border-outline-variant/30 cursor-pointer rounded-sm transition-all duration-300 pr-4">
+          <div>
+            <h4 class="font-['Newsreader'] text-[26px] font-light text-[#001B3D] group-hover:text-secondary transition-colors duration-300">Tariq Al-Farsi</h4>
+            <div class="flex items-center gap-3 mt-2">
+              <span class="font-['Work_Sans'] text-[10px] tracking-[0.15em] uppercase text-on-surface-variant">Principal, Future of Energy</span>
+              <span class="font-['Manrope'] text-[12px] text-outline">· Abu Dhabi</span>
+            </div>
+          </div>
+          <span class="material-symbols-outlined tr-arrow text-outline mt-4 sm:mt-0">arrow_forward</span>
+        </div>
+        <!-- Row 3 -->
+        <div class="team-row group flex flex-col sm:flex-row justify-between sm:items-center py-7 border-b border-outline-variant/30 cursor-pointer rounded-sm transition-all duration-300 pr-4">
+          <div>
+            <h4 class="font-['Newsreader'] text-[26px] font-light text-[#001B3D] group-hover:text-secondary transition-colors duration-300">Nia Okafor</h4>
+            <div class="flex items-center gap-3 mt-2">
+              <span class="font-['Work_Sans'] text-[10px] tracking-[0.15em] uppercase text-on-surface-variant">Director, Portfolio Success</span>
+              <span class="font-['Manrope'] text-[12px] text-outline">· Lagos &amp; Nairobi</span>
+            </div>
+          </div>
+          <span class="material-symbols-outlined tr-arrow text-outline mt-4 sm:mt-0">arrow_forward</span>
+        </div>
+        <!-- Row 4 -->
+        <div class="team-row group flex flex-col sm:flex-row justify-between sm:items-center py-7 border-b border-outline-variant/30 cursor-pointer rounded-sm transition-all duration-300 pr-4">
+          <div>
+            <h4 class="font-['Newsreader'] text-[26px] font-light text-[#001B3D] group-hover:text-secondary transition-colors duration-300">Priya Nair</h4>
+            <div class="flex items-center gap-3 mt-2">
+              <span class="font-['Work_Sans'] text-[10px] tracking-[0.15em] uppercase text-on-surface-variant">Associate, DeepTech</span>
+              <span class="font-['Manrope'] text-[12px] text-outline">· Bangalore</span>
+            </div>
+          </div>
+          <span class="material-symbols-outlined tr-arrow text-outline mt-4 sm:mt-0">arrow_forward</span>
+        </div>
+        <!-- Row 5 -->
+        <div class="team-row group flex flex-col sm:flex-row justify-between sm:items-center py-7 cursor-pointer rounded-sm transition-all duration-300 pr-4">
+          <div>
+            <h4 class="font-['Newsreader'] text-[26px] font-light text-[#001B3D] group-hover:text-secondary transition-colors duration-300">Omar Khalil</h4>
+            <div class="flex items-center gap-3 mt-2">
+              <span class="font-['Work_Sans'] text-[10px] tracking-[0.15em] uppercase text-on-surface-variant">VP, Investor Relations</span>
+              <span class="font-['Manrope'] text-[12px] text-outline">· Riyadh</span>
+            </div>
+          </div>
+          <span class="material-symbols-outlined tr-arrow text-outline mt-4 sm:mt-0">arrow_forward</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     ADVISORS
+════════════════════════════════════════ -->
+<section class="py-24 bg-[#001B3D] relative overflow-hidden">
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/35 to-transparent"></div>
+  <div class="absolute inset-0 grid-dark opacity-60 pointer-events-none"></div>
+
+  <div class="relative max-w-[1280px] mx-auto px-8">
+    <div class="text-center mb-16 reveal">
+      <span class="font-['Work_Sans'] text-[10px] tracking-[0.22em] uppercase text-[#C5A059] mb-3 block">Board &amp; Advisors</span>
+      <div class="gold-divider mx-auto mb-6"></div>
+      <h2 class="font-['Newsreader'] text-[36px] md:text-[44px] font-light text-white leading-tight">
+        Guided by Experience
+      </h2>
+      <p class="font-['Manrope'] text-[16px] text-white/40 max-w-2xl mx-auto mt-4">
+        Our advisory board brings decades of experience across sovereign wealth, institutional asset management, and emerging market operations.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="border border-[#C5A059]/10 p-8 hover:border-[#C5A059]/25 transition-colors duration-300 cursor-default reveal d1">
+        <div class="w-10 h-10 rounded-full border border-[#C5A059]/25 flex items-center justify-center mb-6">
+          <span class="font-['Newsreader'] text-[14px] font-light text-[#C5A059]/70">HS</span>
+        </div>
+        <h4 class="font-['Newsreader'] text-[18px] font-light text-white mb-1">Hassan Al-Sabah</h4>
+        <p class="font-['Work_Sans'] text-[9px] tracking-[0.15em] uppercase text-[#C5A059]/40 mb-3">Advisor</p>
+        <p class="font-['Manrope'] text-[12px] text-white/30 leading-relaxed">Former Deputy Governor, Kuwait Investment Authority</p>
+      </div>
+      <div class="border border-[#C5A059]/10 p-8 hover:border-[#C5A059]/25 transition-colors duration-300 cursor-default reveal d2">
+        <div class="w-10 h-10 rounded-full border border-[#C5A059]/25 flex items-center justify-center mb-6">
+          <span class="font-['Newsreader'] text-[14px] font-light text-[#C5A059]/70">RK</span>
+        </div>
+        <h4 class="font-['Newsreader'] text-[18px] font-light text-white mb-1">Ranjit Kumar</h4>
+        <p class="font-['Work_Sans'] text-[9px] tracking-[0.15em] uppercase text-[#C5A059]/40 mb-3">Advisor</p>
+        <p class="font-['Manrope'] text-[12px] text-white/30 leading-relaxed">Co-founder, InfraIndia. Scaled 3 unicorns from Series A</p>
+      </div>
+      <div class="border border-[#C5A059]/10 p-8 hover:border-[#C5A059]/25 transition-colors duration-300 cursor-default reveal d3">
+        <div class="w-10 h-10 rounded-full border border-[#C5A059]/25 flex items-center justify-center mb-6">
+          <span class="font-['Newsreader'] text-[14px] font-light text-[#C5A059]/70">FO</span>
+        </div>
+        <h4 class="font-['Newsreader'] text-[18px] font-light text-white mb-1">Fatima Ouali</h4>
+        <p class="font-['Work_Sans'] text-[9px] tracking-[0.15em] uppercase text-[#C5A059]/40 mb-3">Board Observer</p>
+        <p class="font-['Manrope'] text-[12px] text-white/30 leading-relaxed">CEO, AfricaTech Group. Nairobi &amp; Cape Town</p>
+      </div>
+      <div class="border border-[#C5A059]/10 p-8 hover:border-[#C5A059]/25 transition-colors duration-300 cursor-default reveal d4">
+        <div class="w-10 h-10 rounded-full border border-[#C5A059]/25 flex items-center justify-center mb-6">
+          <span class="font-['Newsreader'] text-[14px] font-light text-[#C5A059]/70">DC</span>
+        </div>
+        <h4 class="font-['Newsreader'] text-[18px] font-light text-white mb-1">David Chen</h4>
+        <p class="font-['Work_Sans'] text-[9px] tracking-[0.15em] uppercase text-[#C5A059]/40 mb-3">Advisor</p>
+        <p class="font-['Manrope'] text-[12px] text-white/30 leading-relaxed">MD, Asia Pacific, Sequoia Capital. Cross-market specialist</p>
+      </div>
+    </div>
+  </div>
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/35 to-transparent"></div>
+</section>
+
+<!-- ════════════════════════════════════════
+     JOIN THE TEAM CTA
+════════════════════════════════════════ -->
+<section class="relative py-40 overflow-hidden cta-grad">
+  <style>.cta-grad{background:linear-gradient(-45deg,#001B3D,#002952,#001020,#001B3D);background-size:400% 400%;animation:grad-shift 18s ease infinite}@keyframes grad-shift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}</style>
+  <div class="absolute inset-0 grid-dark opacity-60 pointer-events-none"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#C5A059]/4 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/50 to-transparent"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/50 to-transparent"></div>
+
+  <div class="relative z-10 max-w-[1280px] mx-auto px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <div class="reveal-left">
+        <span class="font-['Work_Sans'] text-[10px] tracking-[0.3em] uppercase text-[#C5A059] mb-6 flex items-center gap-4">
+          <span class="w-8 h-px bg-[#C5A059]/40"></span>
+          Join Our Team
+        </span>
+        <h2 class="font-['Newsreader'] text-[44px] md:text-[60px] font-light text-white leading-[0.95] tracking-tight mb-8">
+          Build the future<br/><span class="italic text-[#E2D1B3]">of emerging markets.</span>
+        </h2>
+        <p class="font-['Manrope'] text-[16px] text-white/50 leading-relaxed">
+          We are always looking for exceptional investors, operators, and analysts who share our conviction about the IMEA opportunity. If that's you, we'd love to talk.
+        </p>
+      </div>
+      <div class="reveal-right">
+        <div class="flex flex-col gap-4">
+          <div class="border border-[#C5A059]/15 p-8 hover:border-[#C5A059]/35 transition-colors duration-300 group cursor-pointer">
+            <div class="flex justify-between items-start">
+              <div>
+                <h4 class="font-['Newsreader'] text-[20px] font-light text-white mb-1">Investment Associate</h4>
+                <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-[#C5A059]/50">Dubai · Full-time</span>
+              </div>
+              <span class="material-symbols-outlined text-white/20 group-hover:text-[#C5A059] group-hover:translate-x-1 transition-all duration-300">arrow_outward</span>
+            </div>
+          </div>
+          <div class="border border-[#C5A059]/15 p-8 hover:border-[#C5A059]/35 transition-colors duration-300 group cursor-pointer">
+            <div class="flex justify-between items-start">
+              <div>
+                <h4 class="font-['Newsreader'] text-[20px] font-light text-white mb-1">Portfolio Analyst</h4>
+                <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-[#C5A059]/50">Mumbai · Full-time</span>
+              </div>
+              <span class="material-symbols-outlined text-white/20 group-hover:text-[#C5A059] group-hover:translate-x-1 transition-all duration-300">arrow_outward</span>
+            </div>
+          </div>
+          <div class="border border-[#C5A059]/15 p-8 hover:border-[#C5A059]/35 transition-colors duration-300 group cursor-pointer">
+            <div class="flex justify-between items-start">
+              <div>
+                <h4 class="font-['Newsreader'] text-[20px] font-light text-white mb-1">Venture Scout — Africa</h4>
+                <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-[#C5A059]/50">Lagos · Contract</span>
+              </div>
+              <span class="material-symbols-outlined text-white/20 group-hover:text-[#C5A059] group-hover:translate-x-1 transition-all duration-300">arrow_outward</span>
+            </div>
+          </div>
+          <a href="Contact_Us.html" class="mt-2 bg-[#C5A059] text-[#001B3D] font-['Work_Sans'] text-[11px] font-semibold tracking-[0.18em] uppercase px-8 py-4 hover:bg-[#E2D1B3] transition-colors duration-300 flex items-center justify-center gap-3 group">
+            Send Open Application
+            <span class="material-symbols-outlined text-[15px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer class="bg-[#001B3D] border-t border-[#C5A059]/10">
+  <div class="max-w-[1280px] mx-auto px-12 pt-16 pb-10">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
+      <div class="col-span-1 md:col-span-4">
+        <a href="Index.html"><img alt="IMEA Venture Capital" class="h-10 mb-6" src="Static/Images/IMEA_Logo.png"/></a>
+        <p class="font-['Newsreader'] text-[15px] italic text-[#E2D1B3]/55 leading-relaxed">
+          Investing in the architects<br/>of the future.
+        </p>
+      </div>
+      <div class="col-span-1 md:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div>
+          <h4 class="font-['Work_Sans'] text-[10px] uppercase tracking-[0.2em] text-[#C5A059]/50 mb-4">Company</h4>
+          <div class="flex flex-col gap-3">
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="Index.html">Home</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="Portfolio.html">Portfolio</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="Our_Team.html">Team</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-['Work_Sans'] text-[10px] uppercase tracking-[0.2em] text-[#C5A059]/50 mb-4">Resources</h4>
+          <div class="flex flex-col gap-3">
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="Blog.html">Insights</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">Press Room</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">ESG Report</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-['Work_Sans'] text-[10px] uppercase tracking-[0.2em] text-[#C5A059]/50 mb-4">Legal</h4>
+          <div class="flex flex-col gap-3">
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">Privacy Policy</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">Terms</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">Disclosures</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-['Work_Sans'] text-[10px] uppercase tracking-[0.2em] text-[#C5A059]/50 mb-4">Connect</h4>
+          <div class="flex flex-col gap-3">
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="Contact_Us.html">Contact</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">LinkedIn</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">Twitter / X</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-[#C5A059]/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-3">
+      <p class="font-['Manrope'] text-[11px] text-white/25">© 2024 IMEA Venture Capital. All Rights Reserved. Regulated by DFSA.</p>
+      <p class="font-['Manrope'] text-[11px] text-white/15">Past performance is not indicative of future results.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════ -->
+<script>
+  // Scroll progress bar
+  window.addEventListener('scroll', () => {
+    const el = document.getElementById('read-progress');
+    const st = document.documentElement.scrollTop;
+    const sh = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    el.style.width = (st / sh * 100) + '%';
+  });
+
+  // Navbar blur
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) nav.classList.add('navbar-blur');
+    else nav.classList.remove('navbar-blur');
+  }, { passive: true });
+
+  // Scroll reveals
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  revealEls.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

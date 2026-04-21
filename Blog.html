@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Insights &amp; Journal — IMEA Venture Capital</title>
+<!-- Fonts: identical to homepage -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&family=Work+Sans:wght@500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "secondary-fixed": "#ffdea5", "surface-container-highest": "#e4e2e2",
+          "surface": "#fbf9f8", "surface-variant": "#e4e2e2", "secondary": "#775a19",
+          "on-primary-fixed-variant": "#31476b", "on-tertiary-container": "#85847e",
+          "on-surface": "#1b1c1c", "on-secondary-fixed": "#261900",
+          "on-secondary-container": "#785a1a", "on-secondary": "#ffffff",
+          "on-tertiary": "#ffffff", "on-primary": "#ffffff",
+          "on-surface-variant": "#44474e", "background": "#fbf9f8",
+          "tertiary-container": "#1c1c18", "on-primary-fixed": "#001b3d",
+          "surface-container": "#efeded", "inverse-primary": "#b1c7f2",
+          "surface-tint": "#495f84", "surface-bright": "#fbf9f8",
+          "on-primary-container": "#6f84ac", "primary-fixed": "#d6e3ff",
+          "secondary-container": "#fed488", "surface-dim": "#dbd9d9",
+          "error": "#ba1a1a", "on-error": "#ffffff",
+          "primary-container": "#001b3d", "tertiary": "#000100",
+          "on-background": "#1b1c1c", "on-tertiary-fixed-variant": "#474742",
+          "secondary-fixed-dim": "#e9c176", "surface-container-lowest": "#ffffff",
+          "on-secondary-fixed-variant": "#5d4201", "primary-fixed-dim": "#b1c7f2",
+          "on-tertiary-fixed": "#1c1c18", "primary": "#000000",
+          "surface-container-high": "#eae8e7", "inverse-surface": "#303030",
+          "surface-container-low": "#f5f3f3", "tertiary-fixed": "#e5e2db",
+          "inverse-on-surface": "#f2f0f0", "outline": "#74777f",
+          "outline-variant": "#c4c6cf", "error-container": "#ffdad6",
+          "on-error-container": "#93000a"
+        },
+        "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        "spacing": {
+          "section-padding": "120px", "gutter": "32px",
+          "container-max-width": "1280px", "margin": "64px", "unit": "8px"
+        },
+        "fontFamily": {
+          "headline-md": ["Newsreader"], "headline-lg": ["Newsreader"],
+          "body-md":     ["Manrope"],   "display-xl":  ["Newsreader"],
+          "label-caps":  ["Work Sans"], "body-lg":     ["Manrope"]
+        },
+        "fontSize": {
+          "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "500"}],
+          "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "500"}],
+          "body-md":     ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "display-xl":  ["84px", {"lineHeight": "1.05", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+          "label-caps":  ["12px", {"lineHeight": "1.4", "letterSpacing": "0.1em", "fontWeight": "600"}],
+          "body-lg":     ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  /* ── SCROLL REVEALS ── */
+  .reveal, .reveal-left, .reveal-right {
+    opacity: 0;
+    transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal       { transform: translateY(32px); }
+  .reveal-left  { transform: translateX(-40px); }
+  .reveal-right { transform: translateX(40px); }
+  .reveal.in, .reveal-left.in, .reveal-right.in { opacity: 1; transform: none; }
+  .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+  .d4{transition-delay:.32s}.d5{transition-delay:.4s}
+
+  /* ── GRID TEXTURES ── */
+  .grid-dark {
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  .grid-light {
+    background-image: linear-gradient(rgba(0,27,61,0.04) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0,27,61,0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  /* ── PROGRESS BAR ── */
+  #read-progress {
+    position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+    background: linear-gradient(to right, #C5A059, #fed488);
+    z-index: 9999; transition: width 0.1s linear;
+  }
+
+  /* ── NAVBAR SCROLL ── */
+  .navbar-blur { backdrop-filter: blur(12px); background-color: rgba(0,27,61,0.92) !important; }
+
+  /* ── GOLD DIVIDER ── */
+  .gold-divider { width: 48px; height: 2px; background: linear-gradient(to right, #C5A059, rgba(197,160,89,0)); }
+
+  /* ── FEATURED HERO IMG ── */
+  .hero-img { transition: transform 2.5s cubic-bezier(0.16,1,0.3,1); }
+  .hero-img:hover { transform: scale(1.04); }
+
+  /* ── ARTICLE ROW ── */
+  .article-row {
+    transition: background 0.25s ease, padding-left 0.3s ease;
+    border-left: 2px solid transparent;
+  }
+  .article-row:hover {
+    background: rgba(0,27,61,0.025);
+    padding-left: 16px;
+    border-left-color: #C5A059;
+  }
+
+  /* ── MACRO ARTICLE CARD ── */
+  .macro-card {
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease;
+  }
+  .macro-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0,27,61,0.1);
+  }
+  .macro-card .mc-img {
+    transition: transform 0.7s cubic-bezier(0.16,1,0.3,1), filter 0.4s ease;
+    filter: grayscale(20%);
+  }
+  .macro-card:hover .mc-img { transform: scale(1.06); filter: grayscale(0%); }
+
+  /* ── FOUNDER CARD ── */
+  .founder-card .fc-img { transition: transform 0.6s ease; filter: grayscale(30%); }
+  .founder-card:hover .fc-img { transform: scale(1.04); filter: grayscale(0%); }
+
+  /* ── CATEGORY PILL ── */
+  .cat-pill {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border: 1px solid rgba(0,27,61,0.12);
+    color: rgba(0,27,61,0.45);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    background: transparent;
+    white-space: nowrap;
+  }
+  .cat-pill:hover, .cat-pill.active {
+    background: #001B3D; color: #fff; border-color: #001B3D;
+  }
+
+  /* ── TICKER NUMBERS ── */
+  .article-num {
+    font-family: 'Newsreader', serif;
+    font-size: 96px;
+    font-weight: 300;
+    line-height: 1;
+    color: rgba(0,27,61,0.06);
+    position: absolute;
+    top: -12px;
+    left: -8px;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(0,27,61,0.2); border-radius: 3px; }
+
+  /* ── MARQUEE (category bar on mobile) ── */
+  @keyframes marquee-left { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+</style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-secondary-container selection:text-on-secondary-container overflow-x-hidden">
+
+<div id="read-progress"></div>
+
+<!-- ════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════ -->
+<header id="navbar" class="fixed top-0 w-full z-50 border-b border-outline-variant/30 bg-[#001B3D]">
+  <div class="flex justify-between items-center max-w-[1440px] mx-auto px-12 py-6">
+    <a href="Index.html"><img alt="IMEA Venture Capital" class="h-10" src="Static/Images/IMEA_Logo.png"/></a>
+    <nav class="hidden md:flex gap-8 items-center">
+      <a class="text-white pb-1 font-label-caps text-label-caps hover:text-secondary-container transition-colors duration-300" href="Index.html">HOME</a>
+      <a class="text-white pb-1 font-label-caps text-label-caps hover:text-secondary-container transition-colors duration-300" href="Portfolio.html">PORTFOLIO</a>
+      <a class="text-white pb-1 font-label-caps text-label-caps hover:text-secondary-container transition-colors duration-300" href="Our_Team.html">TEAM</a>
+      <a class="text-secondary-container border-b border-secondary-container/50 pb-1 font-label-caps text-label-caps hover:text-secondary-container transition-colors duration-300" href="Blog.html">INSIGHTS</a>
+      <a class="text-white pb-1 font-label-caps text-label-caps hover:text-secondary-container transition-colors duration-300" href="Contact_Us.html">CONTACT</a>
+    </nav>
+    <button class="hidden md:block font-label-caps text-label-caps bg-secondary-container text-on-secondary-container px-6 py-3 hover:bg-secondary hover:text-white transition-colors duration-300">SUBMIT PITCH</button>
+    <button class="md:hidden text-white"><span class="material-symbols-outlined">menu</span></button>
+  </div>
+</header>
+
+<main>
+
+<!-- ════════════════════════════════════════
+  1. JOURNAL MASTHEAD + FEATURED
+════════════════════════════════════════ -->
+<section class="relative bg-[#001B3D] pt-[90px] overflow-hidden">
+  <div class="absolute inset-0 grid-dark opacity-70 pointer-events-none"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent"></div>
+
+  <!-- Masthead bar -->
+  <div class="relative border-b border-[#C5A059]/15">
+    <div class="max-w-[1280px] mx-auto px-8 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+      <div class="flex items-center gap-6">
+        <span class="font-['Newsreader'] text-[18px] italic font-light text-white">The IMEA Journal</span>
+        <span class="w-px h-4 bg-white/15 hidden sm:block"></span>
+        <span class="font-['Work_Sans'] text-[9px] tracking-[0.22em] uppercase text-[#C5A059]/60">Vol. 04 · Q4 2024</span>
+        <span class="w-px h-4 bg-white/15 hidden sm:block"></span>
+        <span class="font-['Work_Sans'] text-[9px] tracking-[0.22em] uppercase text-white/25">Issue 16</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="font-['Work_Sans'] text-[9px] tracking-[0.2em] uppercase text-white/25">Subscribe to Dispatch</span>
+        <div class="w-6 h-px bg-[#C5A059]/40"></div>
+        <span class="material-symbols-outlined text-[#C5A059]/50 text-[16px]">mail</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Featured article -->
+  <div class="relative max-w-[1280px] mx-auto px-8 pt-16 pb-0">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-end">
+      <!-- Left: text -->
+      <div class="lg:col-span-6 pb-20 reveal-left">
+        <div class="flex items-center gap-4 mb-10">
+          <span class="font-['Work_Sans'] text-[9px] tracking-[0.25em] uppercase text-[#C5A059] border border-[#C5A059]/30 px-4 py-2">Cover Story</span>
+          <span class="font-['Work_Sans'] text-[9px] tracking-[0.2em] uppercase text-white/30">Fintech · 8 Min Read</span>
+        </div>
+        <h1 class="font-['Newsreader'] text-[44px] md:text-[58px] lg:text-[68px] font-light leading-[1.0] tracking-tight text-white mb-8">
+          The Next<br/>Decade of<br/><span class="italic text-[#E2D1B3]">Digital Banking</span><br/>in MENA.
+        </h1>
+        <p class="font-['Manrope'] text-[16px] text-white/50 max-w-md leading-relaxed mb-10">
+          Regulatory shifts, emerging neo-banks, and the infrastructural investments driving financial inclusion across the Middle East and North Africa.
+        </p>
+        <a href="Blog_Detail_Page.html" class="group inline-flex items-center gap-4">
+          <span class="font-['Work_Sans'] text-[10px] tracking-[0.22em] uppercase text-[#C5A059] border-b border-[#C5A059]/40 pb-1 group-hover:border-[#C5A059] transition-colors">Read Full Article</span>
+          <span class="material-symbols-outlined text-[#C5A059] text-[16px] group-hover:translate-x-1 transition-transform duration-300">arrow_forward</span>
+        </a>
+      </div>
+
+      <!-- Right: featured image, bleeds to edge -->
+      <div class="lg:col-span-6 relative reveal-right">
+        <div class="relative overflow-hidden aspect-[4/3] lg:aspect-auto lg:h-[580px]">
+          <img alt="Digital banking in MENA — featured article"
+               class="hero-img w-full h-full object-cover opacity-80"
+               src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFDsQSfij_ETJZe026NIEgvvPwmDuDgaFKXEj1mCCtW7JYEcK2L6zXDFLeSIFdN6lj64pVEMGLnoIfKcZLE4UoTV-fTmjHnqpgvdx5S560xIWFHvuXyFzW95dhlQUwcB0fkmsTJB_hMBL0WtHAgpcJORwPra1sZIwpyzqH9LYcqYWYx6_XpOiR15KCfIuR39YQm1H-_UPw_yDydf40pLYStNbxeyZpaIaZTpel1k87mOA1vcihq4Wy_9BD5Kt1ysM6MFy2r0CP2Kw"/>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#001B3D] via-transparent to-transparent lg:via-[#001B3D]/10"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#001B3D]/60 via-transparent to-transparent"></div>
+          <!-- Corner accent -->
+          <div class="absolute top-6 right-6 w-12 h-12 border-t border-r border-[#C5A059]/40 hidden lg:block"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+  2. CATEGORY FILTER + ISSUE INTRO
+════════════════════════════════════════ -->
+<section class="bg-surface border-b border-outline-variant/40 sticky top-[89px] z-40">
+  <div class="max-w-[1280px] mx-auto px-8 py-4 flex items-center justify-between gap-6 overflow-x-auto">
+    <div class="flex items-center gap-3 flex-shrink-0">
+      <span class="font-['Work_Sans'] text-[9px] tracking-[0.2em] uppercase text-on-surface-variant">Filter</span>
+      <span class="w-px h-4 bg-outline-variant"></span>
+    </div>
+    <div class="flex items-center gap-2 overflow-x-auto pb-1 flex-1">
+      <button class="cat-pill active" onclick="filterCat(this,'all')">All</button>
+      <button class="cat-pill" onclick="filterCat(this,'macro')">Macro</button>
+      <button class="cat-pill" onclick="filterCat(this,'fintech')">Fintech</button>
+      <button class="cat-pill" onclick="filterCat(this,'deeptech')">DeepTech</button>
+      <button class="cat-pill" onclick="filterCat(this,'climate')">Climate</button>
+      <button class="cat-pill" onclick="filterCat(this,'saas')">SaaS</button>
+      <button class="cat-pill" onclick="filterCat(this,'spotlight')">Founder Spotlight</button>
+      <button class="cat-pill" onclick="filterCat(this,'fund')">The Fund's View</button>
+    </div>
+    <span class="font-['Work_Sans'] text-[9px] tracking-[0.2em] uppercase text-on-surface-variant flex-shrink-0 hidden md:block">16 Articles</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+  3. MACRO LENS — Image-forward duo
+════════════════════════════════════════ -->
+<section class="py-20 bg-surface grid-light relative">
+  <div class="max-w-[1280px] mx-auto px-8">
+
+    <!-- Section header -->
+    <div class="flex items-center gap-6 mb-14 reveal">
+      <div class="gold-divider flex-shrink-0"></div>
+      <span class="font-['Work_Sans'] text-[10px] tracking-[0.25em] uppercase text-secondary">Macro Lens</span>
+      <div class="flex-1 h-px bg-outline-variant/30"></div>
+      <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-on-surface-variant hidden md:block">Quarterly Analysis</span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Macro card 1 (large) -->
+      <a href="Blog_Detail_Page.html" class="macro-card group block cursor-pointer reveal d1">
+        <div class="relative overflow-hidden aspect-[16/10] mb-6">
+          <img alt="Enterprise software scaling in emerging markets"
+               class="mc-img w-full h-full object-cover"
+               src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwqN4fBjJ43NqhX0POsEqI-Vff09wNWqOcpa__vB5kbVhqhh4SnPZVIvYMQ7yvlFYjilDHVOHb5p8Mf10aSDk8e69Uqstr-AEF2L56NIrUgSFCR368vPw17F5E6_FxE8EAyPDFG2RNUMx-dlpjDPe6k4_dUNHMWouy0ims1cEMv8C2sOka3OKJQ5kfvjKfsG2LldNvpsxe8t9xlE2dx65-0DBY2ZetktjXDDirc4cF2VFzp8xA4I3RPfiOmGfEtESENDD_C3NUPmU"/>
+          <!-- Category overlay top-left -->
+          <div class="absolute top-0 left-0 right-0 p-5 flex items-center justify-between">
+            <span class="font-['Work_Sans'] text-[9px] tracking-[0.2em] uppercase text-white bg-[#001B3D]/60 border border-white/10 px-3 py-1.5 backdrop-blur-sm">SaaS</span>
+            <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-white/50">5 min read</span>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#001B3D]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400"></div>
+        </div>
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex-1">
+            <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-on-surface-variant mb-3 block">Oct 12, 2024</span>
+            <h3 class="font-['Newsreader'] text-[26px] md:text-[30px] font-light text-[#001B3D] leading-tight mb-3 group-hover:text-secondary transition-colors duration-300">
+              Scaling Enterprise Software in Emerging Markets
+            </h3>
+            <p class="font-['Manrope'] text-[14px] text-on-surface-variant leading-relaxed line-clamp-2">
+              A deep analysis of product-market fit mechanics, localisation costs, and the SaaS metrics that matter differently when deploying across IMEA.
+            </p>
+          </div>
+          <div class="w-10 h-10 border border-outline-variant/40 flex items-center justify-center flex-shrink-0 mt-1 group-hover:bg-[#001B3D] group-hover:border-[#001B3D] transition-all duration-300">
+            <span class="material-symbols-outlined text-[18px] text-on-surface-variant group-hover:text-white transition-colors">arrow_forward</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Macro card 2 -->
+      <a href="Blog_Detail_Page.html" class="macro-card group block cursor-pointer reveal d2">
+        <div class="relative overflow-hidden aspect-[16/10] mb-6">
+          <img alt="Supply chain and logistics infrastructure"
+               class="mc-img w-full h-full object-cover"
+               src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_ISEdFmSvwmrzEDxECkcbF7qs15ANChQRV-Jlku-PQ_3YbUY4BZqrmu4Ln_3BPSnPkHjhIudWpbTsLJqVcmcVyex4uCQxsUPf8u3mzZoUH7HW69m7HOX4xfSRQIvZKq9rbxv3hz6n_kJ9AblSrdjIDUb5DEAveEmc_B7vCwo6OnHuc1NouTHYfrf2bWVNXLd8AXQlFkmMm009PiJl1bXaQX2CGKA4OpLqyfxDB_yQ0PwtfFWLfZ7zW-Pel6J0fO7LrwrNeHQKeAg"/>
+          <div class="absolute top-0 left-0 right-0 p-5 flex items-center justify-between">
+            <span class="font-['Work_Sans'] text-[9px] tracking-[0.2em] uppercase text-white bg-[#001B3D]/60 border border-white/10 px-3 py-1.5 backdrop-blur-sm">Logistics</span>
+            <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-white/50">7 min read</span>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#001B3D]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400"></div>
+        </div>
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex-1">
+            <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-on-surface-variant mb-3 block">Sep 28, 2024</span>
+            <h3 class="font-['Newsreader'] text-[26px] md:text-[30px] font-light text-[#001B3D] leading-tight mb-3 group-hover:text-secondary transition-colors duration-300">
+              Supply Chain Resilience: The New Investment Calculus
+            </h3>
+            <p class="font-['Manrope'] text-[14px] text-on-surface-variant leading-relaxed line-clamp-2">
+              How three consecutive disruptions — Covid, Red Sea, and AI — have permanently reset what institutional investors demand from logistics infrastructure.
+            </p>
+          </div>
+          <div class="w-10 h-10 border border-outline-variant/40 flex items-center justify-center flex-shrink-0 mt-1 group-hover:bg-[#001B3D] group-hover:border-[#001B3D] transition-all duration-300">
+            <span class="material-symbols-outlined text-[18px] text-on-surface-variant group-hover:text-white transition-colors">arrow_forward</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+  4. PULL QUOTE BAND
+════════════════════════════════════════ -->
+<section class="relative py-24 bg-[#001B3D] overflow-hidden">
+  <div class="absolute inset-0 grid-dark opacity-50 pointer-events-none"></div>
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent"></div>
+  <!-- Large decorative quote mark -->
+  <div class="absolute top-6 left-8 font-['Newsreader'] text-[160px] text-[#C5A059]/6 leading-none select-none pointer-events-none">"</div>
+
+  <div class="relative max-w-[1280px] mx-auto px-8 text-center reveal">
+    <p class="font-['Newsreader'] text-[28px] md:text-[36px] lg:text-[44px] italic font-light text-white leading-[1.3] max-w-4xl mx-auto mb-10">
+      "The defining companies of the next twenty years will not come from Silicon Valley. They will come from Lagos, Bengaluru, and Riyadh — built by founders who understand scarcity, complexity, and billion-person markets."
+    </p>
+    <div class="flex items-center justify-center gap-4">
+      <div class="w-8 h-px bg-[#C5A059]/40"></div>
+      <span class="font-['Work_Sans'] text-[10px] tracking-[0.22em] uppercase text-[#C5A059]/60">Elias Rahal · Managing Partner</span>
+      <div class="w-8 h-px bg-[#C5A059]/40"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+  5. SECTOR SIGNALS — Editorial numbered list
+════════════════════════════════════════ -->
+<section class="py-20 bg-surface relative">
+  <div class="max-w-[1280px] mx-auto px-8">
+
+    <!-- Section header -->
+    <div class="flex items-center gap-6 mb-14 reveal">
+      <div class="gold-divider flex-shrink-0"></div>
+      <span class="font-['Work_Sans'] text-[10px] tracking-[0.25em] uppercase text-secondary">Sector Signals</span>
+      <div class="flex-1 h-px bg-outline-variant/30"></div>
+      <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-on-surface-variant hidden md:block">Deep Dives</span>
+    </div>
+
+    <!-- Numbered editorial rows -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-x-16 gap-y-0">
+
+      <!-- Row 1 -->
+      <a href="Blog_Detail_Page.html" class="article-row md:col-span-12 group flex flex-col md:flex-row items-start md:items-center justify-between gap-6 py-8 border-t border-outline-variant/30 relative cursor-pointer rounded-sm transition-all duration-300 reveal d1">
+        <div class="flex items-start gap-8 flex-1">
+          <span class="font-['Newsreader'] text-[13px] font-light text-[#001B3D]/25 leading-none flex-shrink-0 mt-1">01</span>
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-secondary">AgriTech</span>
+              <span class="text-outline-variant">·</span>
+              <span class="font-['Work_Sans'] text-[9px] tracking-[0.15em] uppercase text-on-surface-variant">Sep 15, 2024</span>
+              <span class="text-outline-variant">·</span>
+              <span class="font-['Work_Sans'] text-[9px] tracking-[0.15em] uppercase text-on-surface-variant">6 min</span>
+            </div>
+            <h3 class="font-['Newsreader'] text-[22px] md:text-[26px] font-light text-[#001B3D] leading-tight group-hover:text-secondary transition-colors duration-300">
+              Sustainable Agriculture Tech in Sub-Saharan Africa
+            </h3>
+          </div>
+        </div>
+        <div class="flex-shrink-0 flex items-center gap-3">
+          <span class="font-['Manrope'] text-[13px] text-on-surface-variant hidden md:block max-w-xs line-clamp-1">Precision irrigation, drone monitoring, and the $300B crop-loss problem</span>
+          <span class="material-symbols-outlined text-outline text-[20px] group-hover:text-[#001B3D] group-hover:translate-x-1 transition-all duration-300">arrow_forward</span>
+        </div>
+      </a>
+
+      <!-- Row 2 -->
+      <a href="Blog_Detail_Page.html" class="article-row md:col-span-12 group flex flex-col md:flex-row items-start md:items-center justify-between gap-6 py-8 border-t border-outline-variant/30 relative cursor-pointer rounded-sm transition-all duration-300 reveal d2">
+        <div class="flex items-start gap-8 flex-1">
+          <span class="font-['Newsreader'] text-[13px] font-light text-[#001B3D]/25 leading-none flex-shrink-0 mt-1">02</span>
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-secondary">Macro</span>
+              <span class="text-outline-variant">·</span>
+              <span class="font-['Work_Sans'] text-[9px] tracking-[0.15em] uppercase text-on-surface-variant">Aug 30, 2024</span>
+              <span class="text-outline-variant">·</span>
+              <span class="font-['Work_Sans'] text-[9px] tracking-[0.15em] uppercase text-on-surface-variant">12 min</span>
+            </div>
+            <h3 class="font-['Newsreader'] text-[22px] md:text-[26px] font-light text-[#001B3D] leading-tight group-hover:text-secondary transition-colors duration-300">
+              Q3 IMEA Region Venture Funding Report
+            </h3>
+          </div>
+        </div>
+        <div class="flex-shrink-0 flex items-center gap-3">
+          <span class="font-['Manrope'] text-[13px] text-on-surface-variant hidden md:block max-w-xs line-clamp-1">A shift toward early-stage deep tech despite macro headwinds</span>
+          <span class="material-symbols-outlined text-outline text-[20px] group-hover:text-[#001B3D] group-hover:translate-x-1 transition-all duration-300">arrow_forward</span>
+        </div>
+      </a>
+
+      <!-- Row 3 -->
+      <a href="Blog_Detail_Page.html" class="article-row md:col-span-12 group flex flex-col md:flex-row items-start md:items-center justify-between gap-6 py-8 border-t border-outline-variant/30 relative cursor-pointer rounded-sm transition-all duration-300 reveal d3">
+        <div class="flex items-start gap-8 flex-1">
+          <span class="font-['Newsreader'] text-[13px] font-light text-[#001B3D]/25 leading-none flex-shrink-0 mt-1">03</span>
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-secondary">DeepTech</span>
+              <span class="text-outline-variant">·</span>
+              <span class="font-['Work_Sans'] text-[9px] tracking-[0.15em] uppercase text-on-surface-variant">Aug 14, 2024</span>
+              <span class="text-outline-variant">·</span>
+              <span class="font-['Work_Sans'] text-[9px] tracking-[0.15em] uppercase text-on-surface-variant">9 min</span>
+            </div>
+            <h3 class="font-['Newsreader'] text-[22px] md:text-[26px] font-light text-[#001B3D] leading-tight group-hover:text-secondary transition-colors duration-300">
+              The Resurgence of Hardware: Why Atoms are the New Bits
+            </h3>
+          </div>
+        </div>
+        <div class="flex-shrink-0 flex items-center gap-3">
+          <span class="font-['Manrope'] text-[13px] text-on-surface-variant hidden md:block max-w-xs line-clamp-1">Physical infrastructure bets in a world that over-indexed on software</span>
+          <span class="material-symbols-outlined text-outline text-[20px] group-hover:text-[#001B3D] group-hover:translate-x-1 transition-all duration-300">arrow_forward</span>
+        </div>
+      </a>
+
+      <!-- Row 4 -->
+      <a href="Blog_Detail_Page.html" class="article-row md:col-span-12 group flex flex-col md:flex-row items-start md:items-center justify-between gap-6 py-8 border-t border-b border-outline-variant/30 relative cursor-pointer rounded-sm transition-all duration-300 reveal d4">
+        <div class="flex items-start gap-8 flex-1">
+          <span class="font-['Newsreader'] text-[13px] font-light text-[#001B3D]/25 leading-none flex-shrink-0 mt-1">04</span>
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-secondary">Climate</span>
+              <span class="text-outline-variant">·</span>
+              <span class="font-['Work_Sans'] text-[9px] tracking-[0.15em] uppercase text-on-surface-variant">Jul 22, 2024</span>
+              <span class="text-outline-variant">·</span>
+              <span class="font-['Work_Sans'] text-[9px] tracking-[0.15em] uppercase text-on-surface-variant">7 min</span>
+            </div>
+            <h3 class="font-['Newsreader'] text-[22px] md:text-[26px] font-light text-[#001B3D] leading-tight group-hover:text-secondary transition-colors duration-300">
+              Decentralized Power Grids and the Future of Energy Sovereignty
+            </h3>
+          </div>
+        </div>
+        <div class="flex-shrink-0 flex items-center gap-3">
+          <span class="font-['Manrope'] text-[13px] text-on-surface-variant hidden md:block max-w-xs line-clamp-1">Africa's grid opportunity and why distributed energy wins</span>
+          <span class="material-symbols-outlined text-outline text-[20px] group-hover:text-[#001B3D] group-hover:translate-x-1 transition-all duration-300">arrow_forward</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+  6. FOUNDER SPOTLIGHT — Dark feature card
+════════════════════════════════════════ -->
+<section class="py-20 bg-[#001B3D] relative overflow-hidden">
+  <div class="absolute inset-0 grid-dark opacity-60 pointer-events-none"></div>
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent"></div>
+
+  <div class="relative max-w-[1280px] mx-auto px-8">
+    <!-- Section header -->
+    <div class="flex items-center gap-6 mb-14 reveal">
+      <div class="gold-divider flex-shrink-0"></div>
+      <span class="font-['Work_Sans'] text-[10px] tracking-[0.25em] uppercase text-[#C5A059]">Founder Spotlight</span>
+      <div class="flex-1 h-px bg-[#C5A059]/15"></div>
+      <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-white/25 hidden md:block">Conversations from the Field</span>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <!-- Main spotlight -->
+      <a href="Blog_Detail_Page.html" class="founder-card group lg:col-span-7 relative overflow-hidden cursor-pointer block reveal-left">
+        <div class="relative aspect-[16/10] overflow-hidden">
+          <img alt="AgriTech — sustainable agriculture in Africa"
+               class="fc-img w-full h-full object-cover"
+               src="https://lh3.googleusercontent.com/aida-public/AB6AXuBm0So0pcXkdMlzaj0e1FKvRLusQTqu1JYWexrN-De-80PDtLU38AeyzI0Q8imekBieJW5kvMpCOaZYKT3h28RRhex8SK1atrGJFprFbF_xLPIh7elu-3BPh7VahywpZjoUmFD5zOTFd0JPurnJCJYITL4OkhyeP9cUZG160OY8ERe7Ub1gePAXX4N49fHVXUwd6EOwnqQIRgB4yDWzKXctsLyy24VmCNndzLxBSEom94NdP32rSYOpFspXLS4H_JGe7IA-4GvEuQ"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#001B3D] via-[#001B3D]/20 to-transparent"></div>
+          <div class="absolute top-5 left-5">
+            <span class="font-['Work_Sans'] text-[9px] tracking-[0.2em] uppercase text-[#C5A059] bg-[#001B3D]/70 border border-[#C5A059]/25 px-3 py-1.5 backdrop-blur-sm">Interview</span>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-8">
+            <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-white/40 mb-3 block">Aug 12, 2024 · 11 min read</span>
+            <h3 class="font-['Newsreader'] text-[28px] md:text-[34px] font-light text-white leading-tight group-hover:text-[#E2D1B3] transition-colors duration-300">
+              Building Across Borders:<br/><span class="italic">Interview with Zeinab Al-Fayed</span>
+            </h3>
+          </div>
+        </div>
+      </a>
+
+      <!-- Sidebar: 2 smaller spotlights + fund view -->
+      <div class="lg:col-span-5 flex flex-col gap-5 reveal-right">
+        <!-- Spotlight 2 -->
+        <a href="Blog_Detail_Page.html" class="group flex gap-5 items-start border border-[#C5A059]/10 p-6 hover:border-[#C5A059]/30 transition-colors duration-300 cursor-pointer">
+          <div class="flex-1">
+            <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-[#C5A059]/50 mb-2 block">Founder Spotlight · Jul 5, 2024</span>
+            <h4 class="font-['Newsreader'] text-[20px] font-light text-white leading-tight group-hover:text-[#E2D1B3] transition-colors duration-300 mb-3">
+              From Lagos to London: How Chukwuemeka Scaled HealthStack
+            </h4>
+            <p class="font-['Manrope'] text-[13px] text-white/35 leading-relaxed line-clamp-2">
+              Navigating NHS procurement, Series A fundraising in Europe, and maintaining cultural identity.
+            </p>
+          </div>
+          <span class="material-symbols-outlined text-[#C5A059]/30 group-hover:text-[#C5A059] group-hover:translate-x-1 transition-all duration-300 flex-shrink-0">arrow_forward</span>
+        </a>
+
+        <!-- Spotlight 3 -->
+        <a href="Blog_Detail_Page.html" class="group flex gap-5 items-start border border-[#C5A059]/10 p-6 hover:border-[#C5A059]/30 transition-colors duration-300 cursor-pointer">
+          <div class="flex-1">
+            <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-[#C5A059]/50 mb-2 block">The Fund's View · Jun 18, 2024</span>
+            <h4 class="font-['Newsreader'] text-[20px] font-light text-white leading-tight group-hover:text-[#E2D1B3] transition-colors duration-300 mb-3">
+              Africa's $50B FinTech Opportunity: Beyond Mobile Money
+            </h4>
+            <p class="font-['Manrope'] text-[13px] text-white/35 leading-relaxed line-clamp-2">
+              Why the next chapter in African financial services is institutional infrastructure, not consumer apps.
+            </p>
+          </div>
+          <span class="material-symbols-outlined text-[#C5A059]/30 group-hover:text-[#C5A059] group-hover:translate-x-1 transition-all duration-300 flex-shrink-0">arrow_forward</span>
+        </a>
+
+        <!-- Fund's view highlight -->
+        <div class="border border-[#C5A059]/15 p-6 bg-[#001020] flex-1">
+          <span class="font-['Work_Sans'] text-[9px] tracking-[0.22em] uppercase text-[#C5A059]/50 mb-4 block">The Fund's View</span>
+          <p class="font-['Newsreader'] text-[18px] italic font-light text-white/70 leading-relaxed mb-5">
+            "We are in the most generationally significant window of venture investing in IMEA since the 2010s. This is not hype — it is infrastructure."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-6 h-px bg-[#C5A059]/40"></div>
+            <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-[#C5A059]/50">Vikram Sharma, Q3 LP Letter</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+  7. MORE FROM THE JOURNAL — Compact list
+════════════════════════════════════════ -->
+<section class="py-20 bg-surface">
+  <div class="max-w-[1280px] mx-auto px-8">
+    <!-- Section header -->
+    <div class="flex items-center gap-6 mb-14 reveal">
+      <div class="gold-divider flex-shrink-0"></div>
+      <span class="font-['Work_Sans'] text-[10px] tracking-[0.25em] uppercase text-secondary">Recent Dispatches</span>
+      <div class="flex-1 h-px bg-outline-variant/30"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <!-- Compact card 1 -->
+      <a href="Blog_Detail_Page.html" class="group cursor-pointer block reveal d1">
+        <div class="h-px w-full bg-gradient-to-r from-[#C5A059] to-[#C5A059]/0 mb-6 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+        <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-secondary mb-2 block">Fintech · May 30, 2024</span>
+        <h4 class="font-['Newsreader'] text-[22px] font-light text-[#001B3D] leading-tight mb-4 group-hover:text-secondary transition-colors duration-300">
+          Open Banking in the Gulf: What the Regulators Got Right
+        </h4>
+        <p class="font-['Manrope'] text-[13px] text-on-surface-variant leading-relaxed line-clamp-3">
+          How SAMA and CBUAE's phased rollout created a template that European regulators are now studying closely.
+        </p>
+        <div class="flex items-center gap-2 mt-5 font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-[#001B3D] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          Read <span class="material-symbols-outlined text-[13px]">arrow_forward</span>
+        </div>
+      </a>
+
+      <!-- Compact card 2 -->
+      <a href="Blog_Detail_Page.html" class="group cursor-pointer block reveal d2">
+        <div class="h-px w-full bg-gradient-to-r from-[#C5A059] to-[#C5A059]/0 mb-6 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+        <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-secondary mb-2 block">India · May 12, 2024</span>
+        <h4 class="font-['Newsreader'] text-[22px] font-light text-[#001B3D] leading-tight mb-4 group-hover:text-secondary transition-colors duration-300">
+          India's SaaS Export Engine: $50B by 2030
+        </h4>
+        <p class="font-['Manrope'] text-[13px] text-on-surface-variant leading-relaxed line-clamp-3">
+          The structural tailwinds behind India's emergence as the world's enterprise software capital, and where the white space remains.
+        </p>
+        <div class="flex items-center gap-2 mt-5 font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-[#001B3D] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          Read <span class="material-symbols-outlined text-[13px]">arrow_forward</span>
+        </div>
+      </a>
+
+      <!-- Newsletter bento card -->
+      <div class="bg-[#001B3D] p-8 flex flex-col justify-between reveal d3">
+        <div>
+          <div class="w-10 h-10 border border-[#C5A059]/30 flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-[#C5A059]/60 text-[18px]">mail</span>
+          </div>
+          <span class="font-['Work_Sans'] text-[9px] tracking-[0.22em] uppercase text-[#C5A059]/50 mb-3 block">Monthly Dispatch</span>
+          <h4 class="font-['Newsreader'] text-[22px] font-light text-white mb-3 leading-tight">
+            The IMEA Dispatch
+          </h4>
+          <p class="font-['Manrope'] text-[13px] text-white/40 leading-relaxed mb-6">
+            Curated intelligence and market analysis delivered monthly. Designed for institutional investors and visionary founders.
+          </p>
+        </div>
+        <div class="relative">
+          <input type="email" placeholder="Corporate email address"
+                 class="w-full bg-transparent border-0 border-b border-white/20 text-white placeholder:text-white/25 focus:ring-0 focus:border-[#C5A059] py-3 font-['Manrope'] text-[13px] px-0 transition-colors duration-300"/>
+          <button class="absolute right-0 bottom-3 text-[#C5A059]/60 hover:text-[#C5A059] transition-colors">
+            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Load more -->
+    <div class="mt-20 text-center reveal">
+      <button class="group inline-flex items-center gap-4 font-['Work_Sans'] text-[10px] tracking-[0.22em] uppercase text-[#001B3D] border border-[#001B3D]/25 px-10 py-4 hover:bg-[#001B3D] hover:text-white hover:border-[#001B3D] transition-all duration-300">
+        Load More Insights
+        <span class="material-symbols-outlined text-[16px] group-hover:translate-y-0.5 transition-transform">expand_more</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer class="bg-[#001B3D] border-t border-[#C5A059]/10">
+  <div class="max-w-[1280px] mx-auto px-12 pt-16 pb-10">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
+      <div class="col-span-1 md:col-span-4">
+        <a href="Index.html"><img alt="IMEA Venture Capital" class="h-10 mb-6" src="Static/Images/IMEA_Logo.png"/></a>
+        <p class="font-['Newsreader'] text-[15px] italic text-[#E2D1B3]/55 leading-relaxed">
+          Investing in the architects<br/>of the future.
+        </p>
+      </div>
+      <div class="col-span-1 md:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div>
+          <h4 class="font-['Work_Sans'] text-[10px] uppercase tracking-[0.2em] text-[#C5A059]/50 mb-4">Company</h4>
+          <div class="flex flex-col gap-3">
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="Index.html">Home</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="Portfolio.html">Portfolio</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="Our_Team.html">Team</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-['Work_Sans'] text-[10px] uppercase tracking-[0.2em] text-[#C5A059]/50 mb-4">Journal</h4>
+          <div class="flex flex-col gap-3">
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="Blog.html">All Articles</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">Macro Lens</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">Founder Spotlights</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-['Work_Sans'] text-[10px] uppercase tracking-[0.2em] text-[#C5A059]/50 mb-4">Legal</h4>
+          <div class="flex flex-col gap-3">
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">Privacy Policy</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">Terms</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">Disclosures</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-['Work_Sans'] text-[10px] uppercase tracking-[0.2em] text-[#C5A059]/50 mb-4">Connect</h4>
+          <div class="flex flex-col gap-3">
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="Contact_Us.html">Contact</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">LinkedIn</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">Twitter / X</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-[#C5A059]/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-3">
+      <p class="font-['Manrope'] text-[11px] text-white/25">© 2024 IMEA Venture Capital. All Rights Reserved. Regulated by DFSA.</p>
+      <p class="font-['Manrope'] text-[11px] text-white/15">Past performance is not indicative of future results.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════ -->
+<script>
+  // Scroll progress bar
+  window.addEventListener('scroll', () => {
+    const el = document.getElementById('read-progress');
+    const st = document.documentElement.scrollTop;
+    const sh = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    el.style.width = (st / sh * 100) + '%';
+  });
+
+  // Navbar blur
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('navbar-blur', window.scrollY > 60);
+  }, { passive: true });
+
+  // Scroll reveals
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => obs.observe(el));
+
+  // Category filter
+  function filterCat(btn, cat) {
+    document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>

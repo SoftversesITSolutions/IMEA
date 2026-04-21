@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact — IMEA Venture Capital</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24;}</style>
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Work+Sans:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "on-error-container": "#93000a",
+          "error": "#ba1a1a",
+          "surface-bright": "#fbf9f8",
+          "on-background": "#1b1c1c",
+          "tertiary-container": "#0b1c31",
+          "on-tertiary": "#ffffff",
+          "surface-tint": "#515f78",
+          "on-error": "#ffffff",
+          "outline-variant": "#c5c6cd",
+          "inverse-on-surface": "#f2f0f0",
+          "primary-fixed": "#d6e3ff",
+          "on-primary-fixed": "#0d1c32",
+          "on-secondary-container": "#785a1a",
+          "secondary": "#775a19",
+          "outline": "#75777e",
+          "on-primary": "#ffffff",
+          "secondary-fixed-dim": "#e9c176",
+          "secondary-container": "#fed488",
+          "surface": "#fbf9f8",
+          "on-surface-variant": "#44474d",
+          "surface-variant": "#e4e2e2",
+          "on-tertiary-fixed-variant": "#38485e",
+          "on-primary-fixed-variant": "#39475f",
+          "tertiary": "#000000",
+          "inverse-primary": "#b9c7e4",
+          "secondary-fixed": "#ffdea5",
+          "tertiary-fixed-dim": "#b7c7e3",
+          "surface-container-low": "#f5f3f3",
+          "error-container": "#ffdad6",
+          "primary-fixed-dim": "#b9c7e4",
+          "surface-container-lowest": "#ffffff",
+          "on-primary-container": "#76849f",
+          "inverse-surface": "#303031",
+          "background": "#fbf9f8",
+          "on-tertiary-fixed": "#0b1c31",
+          "surface-container": "#efeded",
+          "tertiary-fixed": "#d3e3ff",
+          "primary-container": "#0d1c32",
+          "primary": "#000000",
+          "surface-container-high": "#e9e8e7",
+          "on-secondary": "#ffffff",
+          "on-secondary-fixed-variant": "#5d4201",
+          "surface-dim": "#dbdad9",
+          "on-secondary-fixed": "#261900",
+          "surface-container-highest": "#e4e2e2",
+          "on-tertiary-container": "#75859e",
+          "on-surface": "#1b1c1c"
+        },
+        borderRadius: {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        spacing: {
+          "gutter": "32px",
+          "section-padding": "120px",
+          "container-max-width": "1280px",
+          "margin": "64px",
+          "unit": "8px"
+        },
+        fontFamily: {
+          "headline-lg": ["Newsreader"],
+          "label-caps": ["Work Sans"],
+          "headline-md": ["Newsreader"],
+          "body-lg": ["Manrope"],
+          "display-xl": ["Newsreader"],
+          "body-md": ["Manrope"]
+        },
+        fontSize: {
+          "headline-lg": ["48px", { "lineHeight": "1.2", "fontWeight": "500" }],
+          "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600" }],
+          "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "500" }],
+          "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+          "display-xl": ["72px", { "lineHeight": "1.05", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+          "body-md": ["16px", { "lineHeight": "1.7", "fontWeight": "400" }]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  /* Scroll progress */
+  #read-progress {
+    position: fixed; top: 0; left: 0; height: 2px;
+    background: #C5A059; z-index: 100; width: 0%;
+    transition: width 0.1s linear;
+  }
+
+  /* Navbar blur */
+  #navbar { transition: background 0.3s, backdrop-filter 0.3s; }
+  #navbar.navbar-blur {
+    backdrop-filter: blur(12px);
+    background: rgba(0,27,61,0.88) !important;
+  }
+
+  /* Grid texture (subtle) */
+  .grid-dark {
+    background-image:
+      linear-gradient(rgba(197,160,89,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(197,160,89,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* Form inputs — gold underline style */
+  .field-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #c5c6cd;
+    padding: 10px 0;
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    color: #1b1c1c;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .field-input:focus { border-bottom-color: #C5A059; }
+  .field-input::placeholder { color: #9a9a9a; }
+  .field-label {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #44474d;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  /* Office card */
+  .office-card {
+    border-top: 1px solid #e4e2e2;
+    padding-top: 24px;
+    transition: border-color 0.25s;
+  }
+  .office-card:hover { border-color: #C5A059; }
+
+  /* Radio-style inquiry type pills */
+  .inquiry-pill input { display: none; }
+  .inquiry-pill label {
+    display: inline-block;
+    padding: 7px 16px;
+    border: 1px solid #c5c6cd;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #44474d;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+  }
+  .inquiry-pill input:checked + label,
+  .inquiry-pill label:hover {
+    border-color: #001B3D;
+    background: #001B3D;
+    color: #fff;
+  }
+
+  /* Step cards */
+  .step-num {
+    font-family: 'Newsreader', serif;
+    font-size: 56px;
+    font-weight: 300;
+    color: rgba(197,160,89,0.18);
+    line-height: 1;
+  }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .reveal-left { opacity: 0; transform: translateX(-28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal-left.in { opacity: 1; transform: translateX(0); }
+  .reveal-right { opacity: 0; transform: translateX(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal-right.in { opacity: 1; transform: translateX(0); }
+
+  /* Gold divider line */
+  .gold-rule { height: 1px; background: linear-gradient(to right, #C5A059, transparent); border: none; }
+</style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+
+<!-- Reading Progress Bar -->
+<div id="read-progress"></div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- NAVBAR                                              -->
+<!-- ═══════════════════════════════════════════════════ -->
+<header id="navbar" class="fixed top-0 w-full z-50 border-b border-white/10 bg-[#001B3D]">
+  <div class="flex justify-between items-center max-w-[1440px] mx-auto px-12 py-5">
+    <a href="Index.html"><img alt="IMEA Venture Capital" class="h-10" src="Static/Images/IMEA_Logo.png"/></a>
+    <nav class="hidden md:flex gap-8 items-center">
+      <a class="text-white pb-1 font-label-caps text-label-caps hover:text-secondary-container transition-colors duration-300" href="Index.html">HOME</a>
+      <a class="text-white pb-1 font-label-caps text-label-caps hover:text-secondary-container transition-colors duration-300" href="Portfolio.html">PORTFOLIO</a>
+      <a class="text-white pb-1 font-label-caps text-label-caps hover:text-secondary-container transition-colors duration-300" href="Our_Team.html">TEAM</a>
+      <a class="text-white pb-1 font-label-caps text-label-caps hover:text-secondary-container transition-colors duration-300" href="Blog.html">INSIGHTS</a>
+      <a class="text-secondary-container border-b border-secondary-container/50 pb-1 font-label-caps text-label-caps" href="Contact_Us.html">CONTACT</a>
+    </nav>
+    <button class="hidden md:block font-label-caps text-label-caps bg-secondary-container text-on-secondary-container px-6 py-3 hover:bg-[#C5A059] hover:text-white transition-colors duration-300">
+      SUBMIT PITCH
+    </button>
+    <button class="md:hidden text-white" id="mobile-menu-btn">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
+  <!-- Mobile Menu -->
+  <div class="hidden md:hidden bg-[#001B3D] border-t border-white/10 px-12 py-6" id="mobile-menu">
+    <nav class="flex flex-col gap-5">
+      <a class="text-white font-label-caps text-label-caps" href="Index.html">HOME</a>
+      <a class="text-white font-label-caps text-label-caps" href="Portfolio.html">PORTFOLIO</a>
+      <a class="text-white font-label-caps text-label-caps" href="Our_Team.html">TEAM</a>
+      <a class="text-white font-label-caps text-label-caps" href="Blog.html">INSIGHTS</a>
+      <a class="text-secondary-container font-label-caps text-label-caps" href="Contact_Us.html">CONTACT</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- HERO — dark navy                                    -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="bg-[#001B3D] grid-dark pt-36 pb-24 relative overflow-hidden">
+    <!-- Decorative circle -->
+    <div class="absolute right-[-120px] top-[-120px] w-[520px] h-[520px] rounded-full border border-[#C5A059]/08 pointer-events-none"></div>
+    <div class="absolute right-[-60px] top-[-60px] w-[360px] h-[360px] rounded-full border border-[#C5A059]/06 pointer-events-none"></div>
+
+    <div class="max-w-[1280px] mx-auto px-12 grid grid-cols-12 gap-8 items-end">
+      <div class="col-span-12 md:col-span-7">
+        <span class="font-label-caps text-label-caps text-[#C5A059] uppercase block mb-5" style="letter-spacing:0.2em;">Get in Touch</span>
+        <h1 class="text-white mb-6" style="font-family:'Newsreader',serif; font-size:clamp(42px,6vw,76px); font-weight:400; line-height:1.05; letter-spacing:-0.02em;">
+          Let's Build<br/>the Future<br/>Together.
+        </h1>
+        <hr class="gold-rule w-20 my-6"/>
+        <p style="font-family:'Manrope',sans-serif; font-size:17px; line-height:1.75; color:rgba(255,255,255,0.55); max-width:480px;">
+          We partner with exceptional founders across India, the Middle East, and Africa. Whether you're raising capital, exploring a partnership, or want to learn more — we'd like to hear from you.
+        </p>
+      </div>
+      <!-- Hero quick stats -->
+      <div class="col-span-12 md:col-span-5 md:pb-2 grid grid-cols-3 gap-px bg-white/10 mt-12 md:mt-0">
+        <div class="bg-[#001B3D] p-6 text-center">
+          <span style="font-family:'Newsreader',serif; font-size:36px; font-weight:400; color:#C5A059; display:block; line-height:1;">3</span>
+          <span style="font-family:'Work Sans',sans-serif; font-size:9px; letter-spacing:0.16em; font-weight:600; text-transform:uppercase; color:rgba(255,255,255,0.4); display:block; margin-top:6px;">Global Offices</span>
+        </div>
+        <div class="bg-[#001B3D] p-6 text-center">
+          <span style="font-family:'Newsreader',serif; font-size:36px; font-weight:400; color:#C5A059; display:block; line-height:1;">48h</span>
+          <span style="font-family:'Work Sans',sans-serif; font-size:9px; letter-spacing:0.16em; font-weight:600; text-transform:uppercase; color:rgba(255,255,255,0.4); display:block; margin-top:6px;">Response Time</span>
+        </div>
+        <div class="bg-[#001B3D] p-6 text-center">
+          <span style="font-family:'Newsreader',serif; font-size:36px; font-weight:400; color:#C5A059; display:block; line-height:1;">30+</span>
+          <span style="font-family:'Work Sans',sans-serif; font-size:9px; letter-spacing:0.16em; font-weight:600; text-transform:uppercase; color:rgba(255,255,255,0.4); display:block; margin-top:6px;">Portfolio Companies</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- HOW WE ENGAGE — 3-step process                     -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="border-b border-outline-variant">
+    <div class="max-w-[1280px] mx-auto px-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-outline-variant">
+        <div class="py-10 md:pr-12 reveal">
+          <span class="step-num">01</span>
+          <h3 class="mt-2 mb-3" style="font-family:'Newsreader',serif; font-size:22px; font-weight:400; color:#001B3D;">Send Your Inquiry</h3>
+          <p style="font-family:'Manrope',sans-serif; font-size:14px; line-height:1.7; color:#44474d;">Fill out the form below or email us directly. Tell us about yourself, your company, and what you're looking to discuss.</p>
+        </div>
+        <div class="py-10 md:px-12 reveal" style="transition-delay:0.12s;">
+          <span class="step-num">02</span>
+          <h3 class="mt-2 mb-3" style="font-family:'Newsreader',serif; font-size:22px; font-weight:400; color:#001B3D;">Initial Review</h3>
+          <p style="font-family:'Manrope',sans-serif; font-size:14px; line-height:1.7; color:#44474d;">Our investment team reviews every submission within 48 hours. We respond to all inquiries — regardless of stage or sector.</p>
+        </div>
+        <div class="py-10 md:pl-12 reveal" style="transition-delay:0.24s;">
+          <span class="step-num">03</span>
+          <h3 class="mt-2 mb-3" style="font-family:'Newsreader',serif; font-size:22px; font-weight:400; color:#001B3D;">First Conversation</h3>
+          <p style="font-family:'Manrope',sans-serif; font-size:14px; line-height:1.7; color:#44474d;">If there's alignment, we'll schedule a call with the relevant partner within two weeks to explore the opportunity further.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- MAIN SECTION — Form + Offices                       -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="max-w-[1280px] mx-auto px-12 py-24 grid grid-cols-12 gap-16">
+
+    <!-- CONTACT FORM — left -->
+    <div class="col-span-12 lg:col-span-7 reveal-left">
+      <div class="flex items-center gap-4 mb-8">
+        <div class="w-5 h-px bg-[#C5A059]"></div>
+        <span class="font-label-caps text-label-caps text-on-surface-variant uppercase" style="letter-spacing:0.2em;">Send an Inquiry</span>
+      </div>
+      <h2 class="mb-10" style="font-family:'Newsreader',serif; font-size:36px; font-weight:400; color:#001B3D; line-height:1.2;">
+        Start the Conversation
+      </h2>
+
+      <!-- Inquiry type pills -->
+      <div class="mb-8">
+        <span class="field-label mb-3 block">I'm reaching out about</span>
+        <div class="flex flex-wrap gap-2">
+          <div class="inquiry-pill">
+            <input type="radio" name="inquiry" id="t1" checked/>
+            <label for="t1">Pitching a Startup</label>
+          </div>
+          <div class="inquiry-pill">
+            <input type="radio" name="inquiry" id="t2"/>
+            <label for="t2">LP / Investment</label>
+          </div>
+          <div class="inquiry-pill">
+            <input type="radio" name="inquiry" id="t3"/>
+            <label for="t3">Partnership</label>
+          </div>
+          <div class="inquiry-pill">
+            <input type="radio" name="inquiry" id="t4"/>
+            <label for="t4">Media / Press</label>
+          </div>
+          <div class="inquiry-pill">
+            <input type="radio" name="inquiry" id="t5"/>
+            <label for="t5">General</label>
+          </div>
+        </div>
+      </div>
+
+      <form class="space-y-8" id="contact-form">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <label class="field-label" for="firstName">First Name</label>
+            <input class="field-input" id="firstName" type="text" placeholder="Enter first name" required/>
+          </div>
+          <div>
+            <label class="field-label" for="lastName">Last Name</label>
+            <input class="field-input" id="lastName" type="text" placeholder="Enter last name" required/>
+          </div>
+        </div>
+        <div>
+          <label class="field-label" for="email">Email Address</label>
+          <input class="field-input" id="email" type="email" placeholder="name@company.com" required/>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <label class="field-label" for="company">Company / Startup</label>
+            <input class="field-input" id="company" type="text" placeholder="Company name"/>
+          </div>
+          <div>
+            <label class="field-label" for="region">Region</label>
+            <select class="field-input" id="region" style="cursor:pointer;">
+              <option value="" disabled selected>Select a region</option>
+              <option>India</option>
+              <option>Middle East / GCC</option>
+              <option>Sub-Saharan Africa</option>
+              <option>North Africa</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="field-label" for="message">Your Message</label>
+          <textarea class="field-input" id="message" rows="5" placeholder="Tell us about your company, stage, and what you're looking for..." style="resize:none;"></textarea>
+        </div>
+        <!-- Disclaimer -->
+        <p style="font-family:'Manrope',sans-serif; font-size:12px; color:#9a9a9a; line-height:1.6;">
+          By submitting this form you agree to our <a href="#" style="text-decoration:underline; color:#775a19;">Privacy Policy</a>. We will never share your information with third parties.
+        </p>
+        <button
+          type="submit"
+          class="bg-[#001B3D] text-white font-label-caps text-label-caps px-10 py-4 hover:bg-[#C5A059] transition-colors duration-300 flex items-center gap-3"
+        >
+          SEND MESSAGE
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+        </button>
+      </form>
+
+      <!-- Success state (hidden) -->
+      <div id="form-success" class="hidden mt-8 p-8 border border-[#C5A059]/30 bg-[#C5A059]/05">
+        <div class="flex items-start gap-4">
+          <span class="material-symbols-outlined text-[#C5A059]" style="font-variation-settings:'FILL' 1;">check_circle</span>
+          <div>
+            <p style="font-family:'Newsreader',serif; font-size:22px; font-weight:400; color:#001B3D; margin-bottom:6px;">Message Received</p>
+            <p style="font-family:'Manrope',sans-serif; font-size:14px; color:#44474d; line-height:1.65;">Thank you for reaching out. A member of our team will be in touch within 48 hours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OFFICES + CONTACT — right -->
+    <aside class="col-span-12 lg:col-span-5 reveal-right">
+
+      <!-- Office header -->
+      <div class="flex items-center gap-4 mb-8">
+        <div class="w-5 h-px bg-[#C5A059]"></div>
+        <span class="font-label-caps text-label-caps text-on-surface-variant uppercase" style="letter-spacing:0.2em;">Our Offices</span>
+      </div>
+      <h2 class="mb-10" style="font-family:'Newsreader',serif; font-size:36px; font-weight:400; color:#001B3D; line-height:1.2;">
+        Where to<br/>Find Us
+      </h2>
+
+      <!-- Office cards -->
+      <div class="space-y-8">
+
+        <div class="office-card">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <span class="font-label-caps text-label-caps text-[#C5A059] uppercase block mb-2" style="font-size:10px; letter-spacing:0.2em;">Headquarters</span>
+              <h4 style="font-family:'Newsreader',serif; font-size:22px; font-weight:400; color:#001B3D;">Dubai, UAE</h4>
+            </div>
+            <span class="text-3xl" aria-hidden="true">🇦🇪</span>
+          </div>
+          <p style="font-family:'Manrope',sans-serif; font-size:14px; line-height:1.7; color:#44474d;">
+            DIFC Innovation Hub<br/>
+            Gate Avenue, South Zone<br/>
+            Dubai, United Arab Emirates
+          </p>
+        </div>
+
+        <div class="office-card">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <span class="font-label-caps text-label-caps text-[#C5A059] uppercase block mb-2" style="font-size:10px; letter-spacing:0.2em;">India Office</span>
+              <h4 style="font-family:'Newsreader',serif; font-size:22px; font-weight:400; color:#001B3D;">Mumbai, India</h4>
+            </div>
+            <span class="text-3xl" aria-hidden="true">🇮🇳</span>
+          </div>
+          <p style="font-family:'Manrope',sans-serif; font-size:14px; line-height:1.7; color:#44474d;">
+            BKC Financial District<br/>
+            Tower 4, Level 12<br/>
+            Mumbai, Maharashtra 400051
+          </p>
+        </div>
+
+        <div class="office-card">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <span class="font-label-caps text-label-caps text-[#C5A059] uppercase block mb-2" style="font-size:10px; letter-spacing:0.2em;">Africa Office</span>
+              <h4 style="font-family:'Newsreader',serif; font-size:22px; font-weight:400; color:#001B3D;">Nairobi, Kenya</h4>
+            </div>
+            <span class="text-3xl" aria-hidden="true">🇰🇪</span>
+          </div>
+          <p style="font-family:'Manrope',sans-serif; font-size:14px; line-height:1.7; color:#44474d;">
+            Westlands Business Park<br/>
+            Waiyaki Way<br/>
+            Nairobi, Kenya
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Direct contact -->
+      <div class="mt-10 pt-8 border-t border-outline-variant space-y-4">
+        <span class="font-label-caps text-label-caps text-on-surface-variant uppercase block mb-5" style="letter-spacing:0.2em; font-size:10px;">Direct Inquiries</span>
+        <a href="mailto:contact@imeavc.com" class="flex items-center gap-3 group">
+          <span class="material-symbols-outlined text-[#C5A059]" style="font-size:18px;">mail</span>
+          <span style="font-family:'Manrope',sans-serif; font-size:15px; color:#001B3D;" class="group-hover:text-[#775a19] transition-colors">contact@imeavc.com</span>
+        </a>
+        <a href="tel:+97142800000" class="flex items-center gap-3 group">
+          <span class="material-symbols-outlined text-[#C5A059]" style="font-size:18px;">call</span>
+          <span style="font-family:'Manrope',sans-serif; font-size:15px; color:#001B3D;" class="group-hover:text-[#775a19] transition-colors">+971 4 280 0000</span>
+        </a>
+        <div class="flex items-center gap-3 pt-2">
+          <a href="#" class="flex items-center gap-2 group" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="text-[#C5A059]"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <span style="font-family:'Work Sans',sans-serif; font-size:11px; letter-spacing:0.12em; font-weight:600; text-transform:uppercase; color:#001B3D;" class="group-hover:text-[#775a19] transition-colors">LinkedIn</span>
+          </a>
+          <span class="text-outline-variant">·</span>
+          <a href="#" class="flex items-center gap-2 group" aria-label="Twitter / X">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-[#C5A059]"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.734-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <span style="font-family:'Work Sans',sans-serif; font-size:11px; letter-spacing:0.12em; font-weight:600; text-transform:uppercase; color:#001B3D;" class="group-hover:text-[#775a19] transition-colors">Twitter / X</span>
+          </a>
+        </div>
+      </div>
+
+    </aside>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- PITCH US CTA — dark section                        -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="bg-[#001B3D] grid-dark py-24 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 70% 50%, rgba(197,160,89,0.06) 0%, transparent 65%);"></div>
+    <div class="max-w-[1280px] mx-auto px-12 grid grid-cols-12 gap-10 items-center relative z-10">
+      <div class="col-span-12 md:col-span-7 reveal">
+        <span class="font-label-caps text-label-caps text-[#C5A059] uppercase block mb-5" style="letter-spacing:0.2em;">For Founders</span>
+        <h2 class="text-white mb-5" style="font-family:'Newsreader',serif; font-size:clamp(32px,4vw,52px); font-weight:400; line-height:1.15; letter-spacing:-0.01em;">
+          Building Something<br/>Exceptional in IMEA?
+        </h2>
+        <p style="font-family:'Manrope',sans-serif; font-size:16px; line-height:1.75; color:rgba(255,255,255,0.55); max-width:520px;">
+          We invest at Series A and B across FinTech, B2B SaaS, supply chain, and climate tech. If you're solving a real problem at meaningful scale, we'd love to see your pitch deck.
+        </p>
+      </div>
+      <div class="col-span-12 md:col-span-5 flex flex-col gap-4 reveal" style="transition-delay:0.15s;">
+        <a href="#contact-form" class="bg-secondary-container text-on-secondary-container font-label-caps text-label-caps px-8 py-4 text-center hover:bg-[#C5A059] hover:text-white transition-colors duration-300 flex items-center justify-center gap-3">
+          SUBMIT YOUR PITCH
+          <span class="material-symbols-outlined text-base">upload_file</span>
+        </a>
+        <a href="Portfolio.html" class="border border-white/20 text-white font-label-caps text-label-caps px-8 py-4 text-center hover:border-[#C5A059]/60 hover:text-[#C5A059] transition-colors duration-300 flex items-center justify-center gap-3">
+          VIEW OUR PORTFOLIO
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+        </a>
+        <div class="grid grid-cols-2 gap-px bg-white/08 mt-2">
+          <div class="bg-[#001B3D] px-5 py-4">
+            <span style="font-family:'Work Sans',sans-serif; font-size:9px; letter-spacing:0.16em; font-weight:600; text-transform:uppercase; color:rgba(255,255,255,0.35); display:block; margin-bottom:4px;">Stage</span>
+            <span style="font-family:'Newsreader',serif; font-size:16px; color:#C5A059;">Series A &amp; B</span>
+          </div>
+          <div class="bg-[#001B3D] px-5 py-4">
+            <span style="font-family:'Work Sans',sans-serif; font-size:9px; letter-spacing:0.16em; font-weight:600; text-transform:uppercase; color:rgba(255,255,255,0.35); display:block; margin-bottom:4px;">Ticket Size</span>
+            <span style="font-family:'Newsreader',serif; font-size:16px; color:#C5A059;">$2M – $20M</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- FOOTER — same as Portfolio / Our_Team / Blog        -->
+<!-- ═══════════════════════════════════════════════════ -->
+<footer class="bg-[#001B3D] border-t border-[#C5A059]/10">
+  <div class="max-w-[1280px] mx-auto px-12 pt-16 pb-10">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
+      <div class="col-span-1 md:col-span-4">
+        <a href="Index.html"><img alt="IMEA Venture Capital" class="h-10 mb-6" src="Static/Images/IMEA_Logo.png"/></a>
+        <p class="font-['Newsreader'] text-[15px] italic text-[#E2D1B3]/55 leading-relaxed">
+          Investing in the architects<br/>of the future.
+        </p>
+      </div>
+      <div class="col-span-1 md:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div>
+          <h4 class="font-['Work_Sans'] text-[10px] uppercase tracking-[0.2em] text-[#C5A059]/50 mb-4">Company</h4>
+          <div class="flex flex-col gap-3">
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="Index.html">Home</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="Portfolio.html">Portfolio</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="Our_Team.html">Team</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-['Work_Sans'] text-[10px] uppercase tracking-[0.2em] text-[#C5A059]/50 mb-4">Resources</h4>
+          <div class="flex flex-col gap-3">
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="Blog.html">Insights</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">Press Room</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-['Work_Sans'] text-[10px] uppercase tracking-[0.2em] text-[#C5A059]/50 mb-4">Legal</h4>
+          <div class="flex flex-col gap-3">
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">Privacy Policy</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">Terms</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">Disclosures</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-['Work_Sans'] text-[10px] uppercase tracking-[0.2em] text-[#C5A059]/50 mb-4">Connect</h4>
+          <div class="flex flex-col gap-3">
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="Contact_Us.html">Contact</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">LinkedIn</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">Twitter / X</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-[#C5A059]/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-3">
+      <p class="font-['Manrope'] text-[11px] text-white/25">© 2024 IMEA Venture Capital. All Rights Reserved. Regulated by DFSA.</p>
+      <p class="font-['Manrope'] text-[11px] text-white/15">Past performance is not indicative of future results.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll progress
+  window.addEventListener('scroll', () => {
+    const el = document.getElementById('read-progress');
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    el.style.width = (scrollTop / scrollHeight * 100) + '%';
+  });
+
+  // Navbar blur
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) nav.classList.add('navbar-blur');
+    else nav.classList.remove('navbar-blur');
+  });
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+  // Mobile menu
+  document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+
+  // Form success state
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('form-success').classList.remove('hidden');
+  });
+</script>
+</body>
+</html>

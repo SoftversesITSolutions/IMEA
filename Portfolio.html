@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portfolio — IMEA Venture Capital</title>
+<!-- Fonts: identical to homepage -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&family=Work+Sans:wght@500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "secondary-fixed": "#ffdea5",
+          "surface-container-highest": "#e4e2e2",
+          "surface": "#fbf9f8",
+          "surface-variant": "#e4e2e2",
+          "secondary": "#775a19",
+          "on-primary-fixed-variant": "#31476b",
+          "on-tertiary-container": "#85847e",
+          "on-surface": "#1b1c1c",
+          "on-secondary-fixed": "#261900",
+          "on-secondary-container": "#785a1a",
+          "on-secondary": "#ffffff",
+          "on-tertiary": "#ffffff",
+          "on-primary": "#ffffff",
+          "on-surface-variant": "#44474e",
+          "background": "#fbf9f8",
+          "tertiary-container": "#1c1c18",
+          "on-primary-fixed": "#001b3d",
+          "surface-container": "#efeded",
+          "inverse-primary": "#b1c7f2",
+          "surface-tint": "#495f84",
+          "tertiary-fixed-dim": "#c9c6c0",
+          "surface-bright": "#fbf9f8",
+          "on-primary-container": "#6f84ac",
+          "primary-fixed": "#d6e3ff",
+          "secondary-container": "#fed488",
+          "surface-dim": "#dbd9d9",
+          "error": "#ba1a1a",
+          "on-error": "#ffffff",
+          "primary-container": "#001b3d",
+          "tertiary": "#000100",
+          "on-background": "#1b1c1c",
+          "on-tertiary-fixed-variant": "#474742",
+          "secondary-fixed-dim": "#e9c176",
+          "surface-container-lowest": "#ffffff",
+          "on-secondary-fixed-variant": "#5d4201",
+          "primary-fixed-dim": "#b1c7f2",
+          "on-tertiary-fixed": "#1c1c18",
+          "primary": "#000000",
+          "surface-container-high": "#eae8e7",
+          "inverse-surface": "#303030",
+          "surface-container-low": "#f5f3f3",
+          "tertiary-fixed": "#e5e2db",
+          "inverse-on-surface": "#f2f0f0",
+          "outline": "#74777f",
+          "outline-variant": "#c4c6cf",
+          "error-container": "#ffdad6",
+          "on-error-container": "#93000a"
+        },
+        "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        "spacing": {
+          "section-padding": "120px",
+          "gutter": "32px",
+          "container-max-width": "1280px",
+          "margin": "64px",
+          "unit": "8px"
+        },
+        "fontFamily": {
+          "headline-md": ["Newsreader"],
+          "headline-lg": ["Newsreader"],
+          "body-md":     ["Manrope"],
+          "display-xl":  ["Newsreader"],
+          "label-caps":  ["Work Sans"],
+          "body-lg":     ["Manrope"]
+        },
+        "fontSize": {
+          "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "500"}],
+          "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "500"}],
+          "body-md":     ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "display-xl":  ["84px", {"lineHeight": "1.05", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+          "label-caps":  ["12px", {"lineHeight": "1.4", "letterSpacing": "0.1em", "fontWeight": "600"}],
+          "body-lg":     ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  /* ── SCROLL REVEALS ── */
+  .reveal, .reveal-left, .reveal-right {
+    opacity: 0;
+    transition: opacity 0.85s cubic-bezier(0.16,1,0.3,1), transform 0.85s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal       { transform: translateY(36px); }
+  .reveal-left  { transform: translateX(-40px); }
+  .reveal-right { transform: translateX(40px); }
+  .reveal.in, .reveal-left.in, .reveal-right.in { opacity: 1; transform: none; }
+  .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+  .d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+  /* ── GRID TEXTURES ── */
+  .grid-dark {
+    background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  .grid-light {
+    background-image: linear-gradient(rgba(0,27,61,0.04) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0,27,61,0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  /* ── PORTFOLIO CARD ── */
+  .p-card {
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1),
+                box-shadow 0.4s ease,
+                border-color 0.3s ease;
+  }
+  .p-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px rgba(0,27,61,0.1);
+    border-color: rgba(197,160,89,0.3);
+  }
+
+  /* ── FILTER BUTTON ── */
+  .filter-btn {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border: 1px solid rgba(0,27,61,0.15);
+    color: rgba(0,27,61,0.5);
+    transition: all 0.25s ease;
+    cursor: pointer;
+    background: transparent;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: #001B3D;
+    color: #fff;
+    border-color: #001B3D;
+  }
+  .filter-btn.active { border-color: #001B3D; }
+
+  /* ── STAGE SELECT ── */
+  select { appearance: none; }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(0,27,61,0.2); border-radius: 3px; }
+
+  /* ── GOLD DIVIDER ── */
+  .gold-divider { width: 48px; height: 2px; background: linear-gradient(to right, #C5A059, rgba(197,160,89,0)); }
+
+  /* ── FEATURE CARD TEXT REVEAL ── */
+  .feat-desc {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+  .group:hover .feat-desc { opacity: 1; transform: translateY(0); }
+
+  /* ── PROGRESS BAR ── */
+  #read-progress {
+    position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+    background: linear-gradient(to right, #C5A059, #fed488);
+    z-index: 9999; transition: width 0.1s linear;
+  }
+
+  /* ── NAVBAR SCROLL ── */
+  .navbar-blur { backdrop-filter: blur(12px); background-color: rgba(0,27,61,0.92) !important; }
+</style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-secondary-container selection:text-on-secondary-container overflow-x-hidden">
+
+<div id="read-progress"></div>
+
+<!-- ════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════ -->
+<header id="navbar" class="fixed top-0 w-full z-50 border-b border-outline-variant/30 bg-[#001B3D]">
+  <div class="flex justify-between items-center max-w-[1440px] mx-auto px-12 py-6">
+    <a href="Index.html"><img alt="IMEA Venture Capital" class="h-10" src="Static/Images/IMEA_Logo.png"/></a>
+    <nav class="hidden md:flex gap-8 items-center">
+      <a class="text-white pb-1 font-label-caps text-label-caps hover:text-secondary-container transition-colors duration-300" href="Index.html">HOME</a>
+      <a class="text-secondary-container border-b border-secondary-container/50 pb-1 font-label-caps text-label-caps hover:text-secondary-container transition-colors duration-300" href="Portfolio.html">PORTFOLIO</a>
+      <a class="text-white pb-1 font-label-caps text-label-caps hover:text-secondary-container transition-colors duration-300" href="Our_Team.html">TEAM</a>
+      <a class="text-white pb-1 font-label-caps text-label-caps hover:text-secondary-container transition-colors duration-300" href="Blog.html">INSIGHTS</a>
+      <a class="text-white pb-1 font-label-caps text-label-caps hover:text-secondary-container transition-colors duration-300" href="Contact_Us.html">CONTACT</a>
+    </nav>
+    <button class="hidden md:block font-label-caps text-label-caps bg-secondary-container text-on-secondary-container px-6 py-3 hover:bg-secondary hover:text-white transition-colors duration-300">
+      SUBMIT PITCH
+    </button>
+    <button class="md:hidden text-white"><span class="material-symbols-outlined">menu</span></button>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<section class="relative bg-[#001B3D] pt-[90px] pb-0 overflow-hidden">
+  <div class="absolute inset-0 grid-dark opacity-70 pointer-events-none"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/35 to-transparent"></div>
+  <!-- Decorative glow -->
+  <div class="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-[#C5A059]/4 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="relative max-w-[1280px] mx-auto px-8 pt-24 pb-20">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
+      <!-- Left: headline -->
+      <div class="col-span-1 md:col-span-7 reveal-left">
+        <span class="font-['Work_Sans'] text-[11px] font-semibold tracking-[0.25em] uppercase text-[#C5A059] mb-6 flex items-center gap-4">
+          <span class="w-8 h-px bg-[#C5A059]"></span>
+          The Network · 47 Companies
+        </span>
+        <h1 class="font-['Newsreader'] text-[60px] md:text-[80px] lg:text-[96px] leading-[0.93] tracking-tight text-white mb-8">
+          Our<br/><span class="italic font-light text-[#E2D1B3]">Portfolio.</span>
+        </h1>
+        <p class="font-['Manrope'] text-[17px] text-white/55 max-w-xl leading-relaxed font-light">
+          Partnering with visionary founders building high-growth technology, fintech, and sustainability companies across India, the Middle East, and Africa.
+        </p>
+      </div>
+
+      <!-- Right: stats -->
+      <div class="col-span-1 md:col-span-5 reveal-right">
+        <div class="grid grid-cols-3 gap-0 border border-[#C5A059]/15">
+          <div class="text-center py-8 px-4 border-r border-[#C5A059]/15">
+            <div class="font-['Newsreader'] text-[42px] font-light text-[#C5A059] leading-none mb-2">47</div>
+            <div class="font-['Work_Sans'] text-[9px] tracking-[0.2em] uppercase text-white/35">Active Cos.</div>
+          </div>
+          <div class="text-center py-8 px-4 border-r border-[#C5A059]/15">
+            <div class="font-['Newsreader'] text-[42px] font-light text-[#C5A059] leading-none mb-2">$2.1B</div>
+            <div class="font-['Work_Sans'] text-[9px] tracking-[0.2em] uppercase text-white/35">Deployed</div>
+          </div>
+          <div class="text-center py-8 px-4">
+            <div class="font-['Newsreader'] text-[42px] font-light text-[#C5A059] leading-none mb-2">12</div>
+            <div class="font-['Work_Sans'] text-[9px] tracking-[0.2em] uppercase text-white/35">Exits</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     FILTER BAR
+════════════════════════════════════════ -->
+<section class="bg-surface border-b border-outline-variant/40 sticky top-[89px] z-40">
+  <div class="max-w-[1280px] mx-auto px-8 py-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+    <div class="flex flex-wrap gap-2 items-center">
+      <span class="font-['Work_Sans'] text-[10px] tracking-[0.18em] uppercase text-on-surface-variant mr-2">Sector</span>
+      <button class="filter-btn active" onclick="setFilter(this)">All</button>
+      <button class="filter-btn" onclick="setFilter(this)">Fintech</button>
+      <button class="filter-btn" onclick="setFilter(this)">SaaS</button>
+      <button class="filter-btn" onclick="setFilter(this)">Sustainability</button>
+      <button class="filter-btn" onclick="setFilter(this)">DeepTech</button>
+      <button class="filter-btn" onclick="setFilter(this)">HealthTech</button>
+    </div>
+    <div class="flex items-center gap-3">
+      <span class="font-['Work_Sans'] text-[10px] tracking-[0.18em] uppercase text-on-surface-variant">Stage</span>
+      <div class="relative">
+        <select class="font-['Work_Sans'] text-[11px] tracking-[0.1em] uppercase text-[#001B3D] border border-outline-variant/50 px-4 py-2 pr-8 bg-transparent focus:outline-none focus:border-[#001B3D] cursor-pointer">
+          <option>All Stages</option>
+          <option>Seed</option>
+          <option>Series A</option>
+          <option>Series B+</option>
+        </select>
+        <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[16px] text-on-surface-variant pointer-events-none">expand_more</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     PORTFOLIO GRID
+════════════════════════════════════════ -->
+<main class="bg-surface pb-32">
+  <div class="max-w-[1280px] mx-auto px-8 pt-16">
+
+    <!-- ── ROW 1: Featured (8+4) ── -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
+
+      <!-- Large feature card -->
+      <div class="md:col-span-8 group p-card relative overflow-hidden bg-[#001020] cursor-pointer min-h-[500px] flex flex-col justify-end border border-transparent reveal">
+        <img alt="NexPay Solutions — cross-border fintech" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-700 ease-out"
+             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWvyVrBUIupl9jduTUH_MkZUTzxh51wduXeMBqzuBvH51wO42kucc8P5haYAzMcaIHJnLYYfakhA6xIeCE7sxJVJjFeKzoQQHAeu7l2FFeiYE3cuHXsraE1ktZLeYjXWj3P3jCv7l6sQkt-ly2UDTfm5qmTksj0L6j4y6U_8Qprb11Qud0cjcNVwT8AtoTDiBrba6Qg8LtwM40Uk7ChEH2CX8ipHSLTTbnGpFimb_dVtNmJp4qv-U4ua_SyKoaw28corTQzLXTLgw"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#001B3D] via-[#001B3D]/30 to-transparent"></div>
+        <!-- Tag -->
+        <div class="absolute top-6 left-6 flex items-center gap-3">
+          <span class="font-['Work_Sans'] text-[9px] tracking-[0.2em] uppercase text-[#C5A059] bg-[#001B3D]/60 border border-[#C5A059]/30 px-4 py-2 backdrop-blur-sm">Featured</span>
+          <span class="font-['Work_Sans'] text-[9px] tracking-[0.2em] uppercase text-white/60 bg-[#001B3D]/40 border border-white/10 px-3 py-2 backdrop-blur-sm">Series B</span>
+        </div>
+        <div class="relative z-10 p-10">
+          <span class="font-['Work_Sans'] text-[10px] tracking-[0.18em] uppercase text-secondary-container mb-3 block">Fintech · Africa &amp; MENA</span>
+          <h2 class="font-['Newsreader'] text-[36px] md:text-[44px] font-light text-white mb-4 leading-tight">NexPay Solutions</h2>
+          <p class="feat-desc font-['Manrope'] text-[15px] text-white/65 max-w-lg mb-6 leading-relaxed">
+            Revolutionizing cross-border B2B payments across the African continent with blockchain-backed settlement rails, serving 2,400+ enterprise clients.
+          </p>
+          <div class="feat-desc inline-flex items-center gap-2 font-['Work_Sans'] text-[10px] tracking-[0.18em] uppercase text-[#C5A059] border-b border-[#C5A059]/40 pb-1 hover:border-[#C5A059] transition-colors">
+            View Case Study
+            <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tall portrait card -->
+      <div class="md:col-span-4 group p-card bg-surface-container-low border border-outline-variant/40 cursor-pointer min-h-[500px] flex flex-col justify-between p-8 reveal d2">
+        <div class="flex justify-between items-start">
+          <div class="w-14 h-14 bg-[#001B3D]/8 flex items-center justify-center">
+            <span class="font-['Newsreader'] text-[22px] font-light text-[#001B3D]">AL</span>
+          </div>
+          <span class="font-['Work_Sans'] text-[9px] tracking-[0.15em] uppercase text-on-surface-variant border border-outline-variant px-3 py-1.5">SaaS</span>
+        </div>
+        <div class="mt-auto pt-10 border-t border-outline-variant/30 group-hover:border-[#C5A059]/30 transition-colors duration-300">
+          <span class="font-['Work_Sans'] text-[10px] tracking-[0.18em] uppercase text-on-surface-variant mb-3 block">Series A · UAE</span>
+          <h3 class="font-['Newsreader'] text-[28px] font-light text-[#001B3D] mb-3">AeroLogic</h3>
+          <p class="font-['Manrope'] text-[14px] text-on-surface-variant leading-relaxed mb-6">
+            AI-driven predictive maintenance software for regional aviation fleets in the Middle East.
+          </p>
+          <div class="inline-flex items-center gap-2 font-['Work_Sans'] text-[10px] tracking-[0.18em] uppercase text-[#001B3D] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            Learn More
+            <span class="material-symbols-outlined text-[14px]">north_east</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ROW 2: Three equal cards ── -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+
+      <!-- Card: GreenGrid -->
+      <div class="group p-card bg-white border border-outline-variant/40 p-8 flex flex-col min-h-[340px] reveal d1">
+        <div class="flex justify-between items-center mb-10">
+          <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-on-surface-variant border border-outline-variant/60 px-3 py-1.5">Seed</span>
+          <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-secondary">Sustainability</span>
+        </div>
+        <div class="flex-1 flex flex-col justify-end">
+          <div class="w-10 h-10 bg-green-50 flex items-center justify-center mb-5">
+            <span class="material-symbols-outlined text-green-700 text-[18px]">eco</span>
+          </div>
+          <h3 class="font-['Newsreader'] text-[26px] font-light text-[#001B3D] mb-3">GreenGrid</h3>
+          <p class="font-['Manrope'] text-[14px] text-on-surface-variant leading-relaxed mb-6">
+            Decentralized solar micro-grid management platform for remote agricultural communities across Sub-Saharan Africa.
+          </p>
+          <a class="inline-flex items-center gap-2 font-['Work_Sans'] text-[10px] tracking-[0.15em] uppercase text-[#001B3D] group-hover:text-secondary transition-colors after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-px after:bg-secondary group-hover:after:w-full relative" href="#">
+            Website <span class="material-symbols-outlined text-[13px]">open_in_new</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card: QuantumLeap AI -->
+      <div class="group p-card bg-white border border-outline-variant/40 p-8 flex flex-col min-h-[340px] reveal d2">
+        <div class="flex justify-between items-center mb-10">
+          <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-on-surface-variant border border-outline-variant/60 px-3 py-1.5">Series A</span>
+          <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-secondary">DeepTech</span>
+        </div>
+        <div class="flex-1 flex flex-col justify-end">
+          <div class="w-10 h-10 bg-blue-50 flex items-center justify-center mb-5">
+            <span class="material-symbols-outlined text-blue-700 text-[18px]">memory</span>
+          </div>
+          <h3 class="font-['Newsreader'] text-[26px] font-light text-[#001B3D] mb-3">QuantumLeap AI</h3>
+          <p class="font-['Manrope'] text-[14px] text-on-surface-variant leading-relaxed mb-6">
+            Next-generation neural network architectures optimized for low-power edge computing in emerging market infrastructure.
+          </p>
+          <a class="inline-flex items-center gap-2 font-['Work_Sans'] text-[10px] tracking-[0.15em] uppercase text-[#001B3D] group-hover:text-secondary transition-colors relative" href="#">
+            Website <span class="material-symbols-outlined text-[13px]">open_in_new</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card: ViraMed (image-based) -->
+      <div class="group p-card relative overflow-hidden min-h-[340px] bg-[#001B3D] cursor-pointer reveal d3">
+        <img alt="ViraMed — diagnostic hardware"
+             class="absolute inset-0 w-full h-full object-cover opacity-35 group-hover:scale-105 transition-transform duration-700"
+             src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2LOmwRi4jHNgvDA5wcy6U1oIz2U0gkkPSu8x9sOMyDzJ3z7b_DNAJdAjIbVwabXsTcwet5S7arSOuN5FBZhVyKMBeQj91Qw_4ck0nrDBOieAcM46IcSFvzob_aWiwqsHw_jj_LOhQmLZQj24yBlYoIvZS1iT0oZwN2pW1V2lEllHTjPer3bYBU0d1ICMgK_WqRhnYSXZwE0c-ly8u7R234GhSP1Q2LMiNaxeErn0Opox0xuvtaOBOXDT08jFrlZta_axWWkDRpgM"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#001B3D] via-[#001B3D]/20 to-transparent"></div>
+        <div class="absolute inset-0 p-8 flex flex-col">
+          <div class="flex justify-between items-center">
+            <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-white/50 border border-white/15 px-3 py-1.5">Series B</span>
+            <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-secondary-container border border-secondary-container/25 px-3 py-1.5">HealthTech</span>
+          </div>
+          <div class="mt-auto translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+            <h3 class="font-['Newsreader'] text-[26px] font-light text-white mb-3">ViraMed</h3>
+            <p class="feat-desc font-['Manrope'] text-[14px] text-white/55 leading-relaxed">
+              Rapid diagnostic hardware and software ecosystem for emerging market clinics across 8 African nations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ROW 3: Wide card (LedgerFin) + narrow card ── -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
+      <!-- Wide: LedgerFin -->
+      <div class="md:col-span-7 group p-card bg-white border border-outline-variant/40 p-10 flex flex-col md:flex-row gap-8 items-start reveal">
+        <div class="flex-shrink-0">
+          <div class="w-20 h-20 bg-[#001B3D]/6 flex items-center justify-center">
+            <span class="font-['Newsreader'] text-[28px] font-light text-[#001B3D]">LF</span>
+          </div>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-on-surface-variant border border-outline-variant/60 px-3 py-1.5">Seed</span>
+            <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-secondary">Fintech</span>
+            <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-on-surface-variant">· MENA</span>
+          </div>
+          <h3 class="font-['Newsreader'] text-[28px] font-light text-[#001B3D] mb-4">LedgerFin</h3>
+          <p class="font-['Manrope'] text-[15px] text-on-surface-variant leading-relaxed mb-6">
+            Next-gen B2B payment infrastructure purpose-built for MENA's SME segment. Enabling real-time multi-currency settlement across 12 regional markets.
+          </p>
+          <div class="flex items-center gap-6">
+            <a class="inline-flex items-center gap-2 font-['Work_Sans'] text-[10px] tracking-[0.15em] uppercase text-[#001B3D] border-b border-[#001B3D]/25 pb-0.5 group-hover:border-secondary group-hover:text-secondary transition-colors" href="#">
+              Website <span class="material-symbols-outlined text-[13px]">open_in_new</span>
+            </a>
+            <span class="font-['Manrope'] text-[12px] text-on-surface-variant">Founded 2021</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Narrow: DataForge -->
+      <div class="md:col-span-5 group p-card bg-[#001B3D] border border-[#C5A059]/15 p-8 flex flex-col justify-between min-h-[260px] reveal d2">
+        <div class="flex justify-between items-start">
+          <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-[#C5A059]/60 border border-[#C5A059]/20 px-3 py-1.5">Series A</span>
+          <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-white/35">DeepTech</span>
+        </div>
+        <div>
+          <h3 class="font-['Newsreader'] text-[26px] font-light text-white mb-3">DataForge</h3>
+          <p class="font-['Manrope'] text-[14px] text-white/45 leading-relaxed mb-6">
+            Industrial IoT data pipelines powering predictive analytics for manufacturing plants across India and Southeast Asia.
+          </p>
+          <div class="inline-flex items-center gap-2 font-['Work_Sans'] text-[10px] tracking-[0.15em] uppercase text-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            Learn More <span class="material-symbols-outlined text-[13px]">arrow_forward</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── EXIT HIGHLIGHT BANNER ── -->
+    <div class="relative overflow-hidden border border-[#C5A059]/20 bg-gradient-to-r from-[#001B3D] to-[#001020] p-10 md:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-16 reveal">
+      <div class="absolute inset-0 grid-dark opacity-50 pointer-events-none"></div>
+      <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/40 to-transparent"></div>
+      <div class="relative z-10 max-w-2xl">
+        <div class="flex items-center gap-4 mb-5">
+          <span class="font-['Work_Sans'] text-[9px] tracking-[0.25em] uppercase text-[#C5A059] border border-[#C5A059]/30 px-4 py-2">Successful Exit · IPO</span>
+          <span class="font-['Work_Sans'] text-[9px] tracking-[0.18em] uppercase text-white/35">2023</span>
+        </div>
+        <h2 class="font-['Newsreader'] text-[32px] md:text-[40px] font-light text-white mb-4">Oasis Logistics Hub</h2>
+        <p class="font-['Manrope'] text-[15px] text-white/50 leading-relaxed">
+          Successfully acquired by Global Freight Corp after expanding automated warehousing solutions across 14 MENA countries, generating a 4.2× return for IMEA investors.
+        </p>
+      </div>
+      <div class="relative z-10 flex-shrink-0">
+        <button class="font-['Work_Sans'] text-[11px] tracking-[0.18em] uppercase border border-[#C5A059]/40 text-[#C5A059] px-8 py-4 hover:bg-[#C5A059] hover:text-[#001B3D] transition-all duration-300 flex items-center gap-3 group">
+          Read Case Study
+          <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ── PAGINATION ── -->
+    <div class="flex justify-center reveal">
+      <div class="flex items-center gap-8 border-b border-outline-variant/40 pb-4">
+        <button class="text-on-surface-variant hover:text-[#001B3D] transition-colors disabled:opacity-30" disabled>
+          <span class="material-symbols-outlined">west</span>
+        </button>
+        <div class="flex gap-6 font-['Work_Sans'] text-[11px] tracking-[0.15em]">
+          <span class="text-[#001B3D] font-semibold border-b-2 border-[#001B3D] pb-1">01</span>
+          <a class="text-on-surface-variant hover:text-[#001B3D] transition-colors pb-1" href="#">02</a>
+          <a class="text-on-surface-variant hover:text-[#001B3D] transition-colors pb-1" href="#">03</a>
+        </div>
+        <button class="text-[#001B3D] hover:text-secondary transition-colors">
+          <span class="material-symbols-outlined">east</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ════════════════════════════════════════
+     CTA STRIP
+════════════════════════════════════════ -->
+<section class="bg-[#001B3D] border-t border-[#C5A059]/15 py-20">
+  <div class="max-w-[1280px] mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-8 reveal">
+    <div>
+      <h2 class="font-['Newsreader'] text-[32px] md:text-[40px] font-light text-white mb-3">
+        Building the next<br/><span class="italic text-[#E2D1B3]">category leader?</span>
+      </h2>
+      <p class="font-['Manrope'] text-[15px] text-white/45 max-w-lg">We back exceptional founders across IMEA. Share your vision — no deck required for the first conversation.</p>
+    </div>
+    <div class="flex flex-col sm:flex-row gap-4 flex-shrink-0">
+      <a href="Contact_Us.html" class="bg-[#C5A059] text-[#001B3D] font-['Work_Sans'] text-[11px] font-semibold tracking-[0.18em] uppercase px-10 py-4 hover:bg-[#E2D1B3] transition-colors duration-300 flex items-center gap-2 group justify-center">
+        Submit Pitch
+        <span class="material-symbols-outlined text-[15px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+      </a>
+      <a href="Contact_Us.html" class="border border-white/20 text-white font-['Work_Sans'] text-[11px] font-semibold tracking-[0.18em] uppercase px-10 py-4 hover:border-[#C5A059] hover:text-[#C5A059] transition-colors duration-300 flex items-center justify-center">
+        Contact Us
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer class="bg-[#001B3D] border-t border-[#C5A059]/10">
+  <div class="max-w-[1280px] mx-auto px-12 pt-16 pb-10">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
+      <div class="col-span-1 md:col-span-4">
+        <a href="Index.html"><img alt="IMEA Venture Capital" class="h-10 mb-6" src="Static/Images/IMEA_Logo.png"/></a>
+        <p class="font-['Newsreader'] text-[15px] italic text-[#E2D1B3]/55 leading-relaxed">
+          Investing in the architects<br/>of the future.
+        </p>
+      </div>
+      <div class="col-span-1 md:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div>
+          <h4 class="font-['Work_Sans'] text-[10px] uppercase tracking-[0.2em] text-[#C5A059]/50 mb-4">Company</h4>
+          <div class="flex flex-col gap-3">
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="Index.html">Home</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="Portfolio.html">Portfolio</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="Our_Team.html">Team</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-['Work_Sans'] text-[10px] uppercase tracking-[0.2em] text-[#C5A059]/50 mb-4">Resources</h4>
+          <div class="flex flex-col gap-3">
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="Blog.html">Insights</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">Press Room</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-['Work_Sans'] text-[10px] uppercase tracking-[0.2em] text-[#C5A059]/50 mb-4">Legal</h4>
+          <div class="flex flex-col gap-3">
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">Privacy Policy</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">Terms</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">Disclosures</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-['Work_Sans'] text-[10px] uppercase tracking-[0.2em] text-[#C5A059]/50 mb-4">Connect</h4>
+          <div class="flex flex-col gap-3">
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="Contact_Us.html">Contact</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">LinkedIn</a>
+            <a class="font-['Manrope'] text-[13px] text-white/45 hover:text-[#C5A059] transition-colors" href="#">Twitter / X</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-[#C5A059]/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-3">
+      <p class="font-['Manrope'] text-[11px] text-white/25">© 2024 IMEA Venture Capital. All Rights Reserved. Regulated by DFSA.</p>
+      <p class="font-['Manrope'] text-[11px] text-white/15">Past performance is not indicative of future results.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════ -->
+<script>
+  // Scroll progress bar
+  window.addEventListener('scroll', () => {
+    const el = document.getElementById('read-progress');
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    el.style.width = (scrollTop / scrollHeight * 100) + '%';
+  });
+
+  // Navbar blur on scroll
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) nav.classList.add('navbar-blur');
+    else nav.classList.remove('navbar-blur');
+  }, { passive: true });
+
+  // Scroll reveals
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  revealEls.forEach(el => obs.observe(el));
+
+  // Filter buttons
+  function setFilter(btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
