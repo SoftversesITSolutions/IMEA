@@ -199,6 +199,45 @@
   /* Gold divider line */
   .gold-rule { height: 1px; background: linear-gradient(to right, #C5A059, transparent); border: none; }
 
+  /* ── MOBILE FIXES (≤768px) ── */
+  @media (max-width: 768px) {
+    /* No horizontal scroll */
+    body { overflow-x: hidden; }
+    #contact-section { overflow-x: hidden; gap: 32px; }
+
+    /* Form fields stack vertically — override any inline grid */
+    #contact-section .grid.grid-cols-1 { display: flex; flex-direction: column; }
+
+    /* Full-width submit button, centred text */
+    #contact-form button[type="submit"] {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* Inquiry pills — tighter on narrow screens */
+    .inquiry-pill label {
+      padding: 6px 10px;
+      font-size: 9px;
+      letter-spacing: 0.11em;
+    }
+
+    /* Office card — prevent flag emoji pushing layout */
+    .office-card .flex.justify-between {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* Hero stat cells — ensure text doesn't clip */
+    .grid.grid-cols-3 > div {
+      padding: 12px 8px;
+    }
+
+    /* CTA section — stack buttons full width */
+    .col-span-12.md\:col-span-5.flex.flex-col {
+      width: 100%;
+    }
+  }
+
   /* ── MOBILE NAV DRAWER ── */
   #nav-drawer { transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); }
   #nav-drawer.drawer-open { transform: translateX(0); }
@@ -320,7 +359,7 @@
   <!-- ═══════════════════════════════════════════════════ -->
   <!-- MAIN SECTION — Form + Offices                       -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <section class="max-w-[1280px] mx-auto px-5 md:px-8 lg:px-12 py-16 md:py-24 grid grid-cols-12 gap-10 lg:gap-16">
+  <section id="contact-section" class="max-w-[1280px] mx-auto px-5 md:px-8 lg:px-12 py-16 md:py-24 grid grid-cols-12 gap-10 lg:gap-16">
 
     <!-- CONTACT FORM — left -->
     <div class="col-span-12 lg:col-span-7 reveal-left">
